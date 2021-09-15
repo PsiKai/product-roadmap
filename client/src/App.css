@@ -1,5 +1,11 @@
-body {
+.app-root {
+  width: 100%;
   display: flex;
+  flex-direction: row;
+}
+
+form {
+  flex-basis: 500px;
 }
 
 form > * {
@@ -9,4 +15,17 @@ form > * {
 
 input, textarea, select {
   margin: 0 0 2rem;
+}
+
+.epics {
+  width: 100%;
+  flex-basis: 50%;
+  margin: 0 auto;
+}
+
+.epics > * {
+  border: 1px solid black;
+  width: 400px;
+  text-align: center;
+  margin: 2rem 0;
 }

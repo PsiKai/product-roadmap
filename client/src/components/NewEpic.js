@@ -15,11 +15,13 @@ const NewEpic = ({epics}) => {
             <input id="priority" type="text"></input>
             <label htmlFor="blocking">Blocking:</label>
             <select id="blocking">
-                {epics.map((item) => <option value={item._id}>{item.title}</option>)}
+                <option value="">None</option>
+                {epics.map((item) => <option key={item._id} value={item._id}>{item.title}</option>)}
             </select>
             <label htmlFor="blocked">Blocked By:</label>
             <select id="blocked">
-                {epics.map((item) => <option value={item._id}>{item.title}</option>)}   
+                <option value="">None</option>
+                {epics.map((item) => <option key={item._id} value={item._id}>{item.title}</option>)}   
             </select>
             <button type="submit">Submit</button>
         </form>
