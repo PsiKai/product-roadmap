@@ -1,18 +1,19 @@
 import './App.css';
-import react, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from "axios"
+import NewEpic from './components/NewEpic';
 
 function App() {
-  const [test, setTest] = useState("")
+  const [epics, setEpics] = useState([])
 
   useEffect(() => {
-    testDB()
+    getEpics()
   }, [])
   
-  const testDB = async () => {
+  const getEpics = async () => {
     try {
-      const res = await axios.get("/testdb")
-      setTest(res.data.doc)
+      const res = await axios.get("/epic/new")
+      setEpics(res.data)
       console.log(res);
     } catch (error) {
       console.log(error.response); 
@@ -20,11 +21,8 @@ function App() {
   }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src="https://ca.slack-edge.com/T040ZFA3W-U01SGE9PCJJ-894fd36c293c-512" className="App-logo" alt="logo" />
-        <p>LET'S GET EXCITED</p>
-        <p>This is from DB: {test}</p>
-      </header>
+      <NewEpic epics={epics} />
+      {/* <Epics /> */}
     </div>
   );
 }

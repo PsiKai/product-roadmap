@@ -3,6 +3,17 @@ const router = express.Router()
 
 const Epic = require("../db/models/epic")
 
+router.get("/", (req, res) => {
+    Epic.find({}, (err, epics) => {
+        if (err) {
+            console.log(err);
+            res.send("error")
+        } else {
+            res.send(epics)
+        }
+    })
+})
+
 router.post("/", (req, res) => {
     const { epic } = req.body
     console.log(epic);
