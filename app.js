@@ -9,6 +9,8 @@ const mongoose = require("mongoose")
 
 const app = express()
 
+app.use(express.json())
+
 connectDB()
 
 const port = process.env.PORT || 5000
@@ -39,3 +41,5 @@ app.get("/testdb", async (req, res) => {
         res.send(newTest)
     })
 })
+
+app.use("/epic/new", require("./routes/newEpic"))
