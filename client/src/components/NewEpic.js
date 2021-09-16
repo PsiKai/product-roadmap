@@ -88,7 +88,7 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
 
                 <button type="button" onClick={addDependency}>+ Add Dependency</button>
                 {newDependencies.map(item => {
-                    return <NewDependency key={item.id} id={item.id} add={dependencyChange}/>
+                    return <NewDependency key={item.id} id={item.id} add={dependencyChange} statuses={statuses}/>
                 })}
 
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const NewDependency = ({ id, add }) => {
+const NewDependency = ({ id, add, statuses }) => {
     const [dependency, setDependency] = useState({id})
 
     const inputChange = (e) => {
@@ -23,6 +23,10 @@ const NewDependency = ({ id, add }) => {
                 <input name="title" onChange={inputChange} id={`title-${id}`} type="text"></input>
                 <label htmlFor={`description-${id}`}>Description</label>
                 <textarea name="description" onChange={inputChange} id={`description-${id}`}></textarea>
+                <select onChange={inputChange} id="status" name="status">
+                    <option value="">Select Status</option>
+                    {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
+                </select>
             </div>
         </div>
     )
