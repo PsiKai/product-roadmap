@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 
-const NewDependency = ({ id, add, statuses }) => {
+const NewDependency = ({ id, add, statuses, remove, index }) => {
     const [dependency, setDependency] = useState({id})
 
     const inputChange = (e) => {
@@ -17,7 +17,8 @@ const NewDependency = ({ id, add, statuses }) => {
 
     return (
         <div>
-            <p>Dependency {id}</p>
+            <p>Dependency {index + 1}</p>
+            <button type="button" onClick={() => remove(id)}>X</button>
             <div>
                 <label htmlFor={`title-${id}`}>Title</label>
                 <input name="title" onChange={inputChange} id={`title-${id}`} type="text"></input>

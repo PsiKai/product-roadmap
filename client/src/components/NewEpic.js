@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from "axios"
 import NewDependency from './NewDependency'
+import { v4 as uuidv4 } from 'uuid';
 
 const NewEpic = ({ epics: [manager, borrower, lender]}) => {
     const [form, setForm] = useState({})
@@ -48,7 +49,19 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
     }
 
     const addDependency = (e) => {
-        setNewDependencies([...newDependencies, {id: newDependencies.length + 1}])
+        setNewDependencies([...newDependencies, {id: uuidv4()}])
+    }
+
+    const removeDependency = (id) => {
+        const copy = [...newDependencies]
+        const filtered = copy.filter(item => item.id !== id)
+        // const remapped = filtered.map((item, i) => item = {id: i + 1})
+        // console.log(filtered, remapped);
+        setNewDependencies(filtered)
+        const depCopy = [...dependencies]
+        const depFilter = depCopy.filter(item => item.id !== id)
+        console.log(depFilter);
+        setDependencies(depFilter)
     }
 
     const toolkits = ["Borrower Toolkit", "Loan Officer Toolkit", "Manager and Integrations Toolkit"]
@@ -87,8 +100,8 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
                 </input>
 
                 <button type="button" onClick={addDependency}>+ Add Dependency</button>
-                {newDependencies.map(item => {
-                    return <NewDependency key={item.id} id={item.id} add={dependencyChange} statuses={statuses}/>
+                {newDependencies.map((item, i) => {
+                    return <NewDependency key={item.id} id={item.id} index={i} add={dependencyChange} statuses={statuses} remove={removeDependency}/>
                 })}
 
 
