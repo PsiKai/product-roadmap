@@ -1,9 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import axios from "axios"
+import NewDependency from './NewDependency'
 
 const NewEpic = ({ epics: [manager, borrower, lender]}) => {
     const [form, setForm] = useState({})
-    const epics = [...manager, ...borrower, ...lender]
+    const [newDependencies, setNewDependencies] = useState([])
+    const [dependencies, setDependencies] = useState([])
+
+    useEffect(() => {
+        setForm({
+            ...form,
+            dependencies
+        })
+    }, [dependencies])
 
     const inputChange = (e) => {
         setForm({
@@ -24,8 +33,26 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
         }
     }
 
+    const dependencyChange = (newDependency) => {
+        const copy = [...dependencies]
+        const find = copy.findIndex(item => item.id === newDependency.id)
+        if (find > -1) {
+            copy[find] = newDependency
+            setDependencies(copy)
+        } else {
+            setDependencies([
+                ...dependencies,
+                newDependency
+            ])
+        }
+    }
+
+    const addDependency = (e) => {
+        setNewDependencies([...newDependencies, {id: newDependencies.length + 1}])
+    }
+
     const toolkits = ["Borrower Toolkit", "Loan Officer Toolkit", "Manager and Integrations Toolkit"]
-    const statuses = ["Planned", "In Progress", "Completed", "Pruned"]
+    const statuses = ["Planned", "In Progress", "Completed", "Pruned", "Blocked"]
 
     return (
         <div className="form-container">
@@ -59,17 +86,11 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
                 >
                 </input>
 
-                <label htmlFor="blocking">Blocking:</label>
-                <select onChange={inputChange} id="blocking">
-                    <option value="">None</option>
-                    {epics.map((item) => <option key={item._id} value={item._id}>{item.title}</option>)}
-                </select>
+                <button type="button" onClick={addDependency}>+ Add Dependency</button>
+                {newDependencies.map(item => {
+                    return <NewDependency key={item.id} id={item.id} add={dependencyChange}/>
+                })}
 
-                <label htmlFor="blocked">Blocked By:</label>
-                <select onChange={inputChange} id="blocked">
-                    <option value="">None</option>
-                    {epics.map((item) => <option key={item._id} value={item._id}>{item.title}</option>)}   
-                </select>
 
                 <button type="submit">Submit</button>
             </form>

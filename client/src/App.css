@@ -24,12 +24,12 @@ form {
   width: 100%;
 }
 
-form > * {
+form * {
   display: block;
   width: 100%;
 }
 
-input, textarea, select {
+input, textarea, select, button[type="button"] {
   margin: 0 0 2rem;
 }
 

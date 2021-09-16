@@ -16,7 +16,7 @@ const epicSchema = mongoose.Schema({
     },
     status: {
         type: String,
-        enum: ["Planned", "In Progress", "Completed", "Pruned"]
+        enum: ["Planned", "In Progress", "Completed", "Pruned", "Blocked"]
     },
     dependencies: {
         type: Array,
