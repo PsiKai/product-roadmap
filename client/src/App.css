@@ -1,11 +1,23 @@
 .app-root {
   width: 100%;
-  max-width: 50rem;
+  max-width: 95%;
   display: flex;
   flex-direction: row;
   margin: 0 auto;
   align-items: space-evenly;
   gap: 5rem;
+}
+
+.app-root > * {
+  width: 100%;
+}
+
+h1 {
+  text-align: center;
+}
+
+.form-container {
+  flex-basis: minmax(400px, 800px);
 }
 
 form {
@@ -25,13 +37,19 @@ input, textarea, select {
 
 .epics {
   width: 100%;
-  /* flex-basis: 50%; */
-  /* margin: 0 auto; */
+  display: flex;
+  align-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 2rem;
 }
 
 .epics > * {
+  padding: 0 1rem;
+  display: flex;
+  flex-direction: column;
   border: 1px solid black;
-  /* width: 400px; */
+  max-width: 300px;
   text-align: center;
   margin: 2rem 0;
 }

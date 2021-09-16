@@ -1,5 +1,5 @@
 import './App.css';
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Fragment } from 'react'
 import axios from "axios"
 import NewEpic from './components/NewEpic';
 import Epics from "./components/Epics"
@@ -21,10 +21,13 @@ function App() {
   }
   return (
     epics ?
-    <div className="app-root">
-      <Epics epics={epics} />
-      <NewEpic epics={epics} />
-    </div>
+    <Fragment>
+      <h1>Maxwell Product Roadmap</h1>
+      <div className="app-root">
+        <Epics epics={epics} />
+        <NewEpic epics={epics} />
+      </div>
+    </Fragment>
     :
     <div>Loading...</div>
     
