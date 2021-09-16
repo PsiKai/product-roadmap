@@ -21,8 +21,6 @@ h1 {
 }
 
 form {
-  /* flex-basis: 500px; */
-  /* margin: 0 auto; */
   width: 100%;
 }
 
@@ -34,25 +32,6 @@ form > * {
 input, textarea, select {
   margin: 0 0 2rem;
 }
-
-/* .epics {
-  width: 100%;
-  display: flex;
-  align-content: space-between;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 2rem;
-} */
-
-/* .epics > * {
-  padding: 0 1rem;
-  display: flex;
-  flex-direction: column;
-  border: 1px solid black;
-  max-width: 300px;
-  text-align: center;
-  margin: 2rem 0;
-} */
 
 .epics h2 {
   text-decoration: underline;
