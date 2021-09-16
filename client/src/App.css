@@ -35,16 +35,16 @@ input, textarea, select {
   margin: 0 0 2rem;
 }
 
-.epics {
+/* .epics {
   width: 100%;
   display: flex;
   align-content: space-between;
   flex-direction: row;
   flex-wrap: wrap;
   gap: 2rem;
-}
+} */
 
-.epics > * {
+/* .epics > * {
   padding: 0 1rem;
   display: flex;
   flex-direction: column;
@@ -52,4 +52,14 @@ input, textarea, select {
   max-width: 300px;
   text-align: center;
   margin: 2rem 0;
+} */
+
+.epics h2 {
+  text-decoration: underline;
+}
+
+.epics div {
+  border: 1px solid black;
+  padding: 0 1rem;
+  margin-bottom: 1rem;
 }

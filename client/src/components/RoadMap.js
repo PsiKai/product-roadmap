@@ -5,7 +5,7 @@ import Epics from "./Epics"
 
 const RoadMap = () => {
     const appContext = useContext(AppContext)
-    const { epics, getEpics } = appContext
+    const { getEpics, epics } = appContext
 
 
     useEffect(() => {
@@ -14,16 +14,16 @@ const RoadMap = () => {
     
 
     return (
-        epics ?
-            <Fragment>
-                <h1>Maxwell Product Roadmap</h1>
-                <div className="app-root">
-                    <Epics epics={epics} />
-                    <NewEpic epics={epics} />
-                </div>
-            </Fragment>
-            :
-            <div>Loading...</div>
+        epics.length ?
+        <Fragment>
+            <h1>Maxwell Product Roadmap</h1>
+            <div className="app-root">
+                <Epics epics={epics}/>
+                <NewEpic epics={epics} />
+            </div>
+        </Fragment>
+        : 
+        <div>Loading...</div>
     )
 }
 

@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from "axios"
 
-const NewEpic = ({epics}) => {
+const NewEpic = ({ epics: [manager, borrower, lender]}) => {
     const [form, setForm] = useState({})
+    const epics = [...manager, ...borrower, ...lender]
 
     const inputChange = (e) => {
         setForm({

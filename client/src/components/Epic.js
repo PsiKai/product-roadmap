@@ -1,12 +1,11 @@
 import React from 'react'
 
-const Epic = ({ epic: { title, toolkit, status, description } }) => {
+const Epic = ({ epic: { title, status, description } }) => {
     return (
         <div>
-            <h1>{toolkit}</h1>
-            <h2>{title}</h2>
+            <h3>{title}</h3>
             <p>{description}</p>
-            <h3>{status}</h3>
+            <h4>{status}</h4>
         </div>
     )
 }
