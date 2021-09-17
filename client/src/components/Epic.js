@@ -1,9 +1,11 @@
 import React from 'react'
 
-const Epic = ({ epic: { title, status, description, dependencies } }) => {
+const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit }) => {
+
     return (
         <div>
             <h3>{title}</h3>
+            <button type="button" id={_id} name={toolkit} onClick={edit}>Edit</button>
             <p>{description}</p>
             <h4>{status}</h4>
             {dependencies.map(dep => {

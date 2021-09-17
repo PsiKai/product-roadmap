@@ -3,12 +3,27 @@ import axios from "axios"
 import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
 
-const NewEpic = ({ epics: [manager, borrower, lender]}) => {
+const NewEpic = ({ epic=null }) => {
     const [form, setForm] = useState({})
     const [newDependencies, setNewDependencies] = useState([])
     const [dependencies, setDependencies] = useState([])
+    const [edit, setEdit] = useState(false)
 
     useEffect(() => {
+        if (epic) {
+            setForm(epic)
+            if (epic.dependencies) {
+                setNewDependencies(epic.dependencies)
+                setDependencies(epic.dependencies)
+            } else {
+                setDependencies([])
+                setNewDependencies([])
+            }
+        }
+    }, [epic])
+
+    useEffect(() => {
+        console.log("dependenices effect", dependencies);
         setForm({
             ...form,
             dependencies
@@ -48,19 +63,17 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
         }
     }
 
-    const addDependency = (e) => {
+    const addDependency = () => {
         setNewDependencies([...newDependencies, {id: uuidv4()}])
     }
 
     const removeDependency = (id) => {
         const copy = [...newDependencies]
         const filtered = copy.filter(item => item.id !== id)
-        // const remapped = filtered.map((item, i) => item = {id: i + 1})
-        // console.log(filtered, remapped);
         setNewDependencies(filtered)
+
         const depCopy = [...dependencies]
         const depFilter = depCopy.filter(item => item.id !== id)
-        console.log(depFilter);
         setDependencies(depFilter)
     }
 
@@ -72,19 +85,19 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
             <h2>Create a New Epic!</h2>
             <form onSubmit={submitForm}>
                 <label htmlFor="toolkit">Toolkit</label>
-                <select onChange={inputChange} id="toolkit">
+                <select onChange={inputChange} id="toolkit" value={form.toolkit}>
                     <option value="">Select Toolkit</option>
                     {toolkits.map((kit, i) => <option value={kit} key={i}>{kit}</option>)}
                 </select>
 
                 <label htmlFor="title">Title</label>
-                <input onChange={inputChange} id="title" type="text"></input>
+                <input onChange={inputChange} id="title" type="text" value={form.title}></input>
 
                 <label htmlFor="description">Description</label>
-                <textarea onChange={inputChange} id="description"></textarea>
+                <textarea onChange={inputChange} id="description" value={form.description}></textarea>
 
                 <label htmlFor="status">Status</label>
-                <select onChange={inputChange} id="status">
+                <select onChange={inputChange} id="status" value={form.status}>
                     <option value="">Select Status</option>
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
                 </select>
@@ -96,12 +109,21 @@ const NewEpic = ({ epics: [manager, borrower, lender]}) => {
                     type="number" 
                     step="1" 
                     min="1"
+                    value={form.priority}
                 >
                 </input>
 
                 <button type="button" onClick={addDependency}>+ Add Dependency</button>
                 {newDependencies.map((item, i) => {
-                    return <NewDependency key={item.id} id={item.id} index={i} add={dependencyChange} statuses={statuses} remove={removeDependency}/>
+                    return <NewDependency 
+                                key={item.id} 
+                                id={item.id} 
+                                index={i} 
+                                add={dependencyChange} 
+                                statuses={statuses} 
+                                remove={removeDependency}
+                                value={form.dependencies[i]}
+                                />
                 })}
 
 
