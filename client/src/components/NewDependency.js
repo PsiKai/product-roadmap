@@ -27,7 +27,7 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
     return (
         <div>
             <hr/>
-            <p>Dependency {index + 1}</p>
+            <h4>Sub-task {index + 1}</h4>
             <button type="button" onClick={() => remove(id)} className="action"><ClearIcon/></button>
             <div>
                 <label htmlFor={`title-${id}`}>Title</label>

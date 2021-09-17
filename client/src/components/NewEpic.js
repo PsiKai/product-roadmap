@@ -3,7 +3,7 @@ import axios from "axios"
 import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
 import AddIcon from '@mui/icons-material/Add';
-import ClearIcon from '@mui/icons-material/Clear';
+import EditOffIcon from '@mui/icons-material/EditOff';
 
 const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const [form, setForm] = useState({})
@@ -92,7 +92,8 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     return (
         <div className="form-container">
             <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>
-            {editState && <button onClick={cancelEdit} type="button" className="action" ><ClearIcon/></button>}
+            {editState && <button onClick={cancelEdit} type="button" className="action" ><EditOffIcon/></button>}
+
             <form onSubmit={submitForm}>
                 <label htmlFor="toolkit">Toolkit</label>
                 <select onChange={inputChange} id="toolkit" value={form.toolkit} required>
@@ -104,7 +105,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                 <input onChange={inputChange} id="title" type="text" value={form.title} required></input>
 
                 <label htmlFor="description">Description</label>
-                <textarea onChange={inputChange} id="description" value={form.description}></textarea>
+                <textarea onChange={inputChange} id="description" value={form.description} rows="3"></textarea>
 
                 <label htmlFor="status">Status</label>
                 <select onChange={inputChange} id="status" value={form.status} required>

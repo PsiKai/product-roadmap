@@ -32,6 +32,7 @@
   --blue-green: #0BDFEE;
   --teal: #0AE4C0;
   --teal-4: #08AA8F;
+  --teal-2: #62EDD6;
   --red: #CE355B;
 }
 
@@ -67,15 +68,19 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 5rem;
+  gap: 5rem;
 }
 
-.heading h1 {
-  margin: 0;
+.heading .logo-heading {
+  position: absolute;
+  height: 100px;
+  right: 2rem;
 }
 
 h1 {
   text-align: center;
   font-family: var(--Freight);
+  font-size: 3rem;
 }
 
 h2 {
@@ -113,6 +118,16 @@ input, textarea, select, button {
   color: var(--dark-blue);
   font-family: inherit;
   font-size: 1rem;
+  border-radius: 0.25rem;
+}
+
+textarea {
+  resize: none;
+}
+
+input, select {
+  height: 2rem;
+  border-color: internal light dark(var(--dark-blue), var(--med-blue));
 }
 
 button {
@@ -122,11 +137,11 @@ button {
   border-radius: 0.25rem;
   cursor: pointer;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
-  transition: all 150ms ease;
+  transition: all 200ms ease;
 }
 
 button:hover {
-  background-color: var(--teal-4);
+  background-color: var(--teal-2);
 }
 
 button.action {
@@ -137,6 +152,7 @@ button.action {
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
+  background: linear-gradient(var(--teal-2), var(--teal) 70%, var(--teal-4));
 }
 
 .epics h2 {
@@ -157,8 +173,10 @@ button.action {
   background-color: var(--light-blue);
 }
 
-.epics div div ~ div {
-  margin-top: -5rem;
+.epics div div:not(:first-of-type) {
+  position: relative;
+  margin-top: -4.5rem;
+  bottom: -90%;
   transition: all 200ms ease;
 }
 

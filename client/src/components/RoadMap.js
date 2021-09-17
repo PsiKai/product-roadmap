@@ -17,7 +17,7 @@ const RoadMap = () => {
     }, [])
 
     const editEpic = (e) => {
-        const { name, id } = e.target
+        const { name, id } = e.currentTarget
         const [manager, borrower, lender] = epics
         let epicArray
         switch (name) {
