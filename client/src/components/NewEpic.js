@@ -4,6 +4,7 @@ import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
 import AddIcon from '@mui/icons-material/Add';
 import EditOffIcon from '@mui/icons-material/EditOff';
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const [form, setForm] = useState({})
@@ -92,7 +93,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     return (
         <div className="form-container">
             <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>
-            {editState && <button onClick={cancelEdit} type="button" className="action" ><EditOffIcon/></button>}
+            {editState && <button onClick={cancelEdit} type="button" className="secondary-action" ><EditOffIcon/></button>}
 
             <form onSubmit={submitForm}>
                 <label htmlFor="toolkit">Toolkit</label>
@@ -126,8 +127,14 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                 </input>
 
                 <button type="button" onClick={addDependency} className="action"><AddIcon/> Task</button>
+                <TransitionGroup>
                 {newDependencies.map((item, i) => {
-                    return <NewDependency 
+                    return <CSSTransition
+                                key={item.id}
+                                classNames="dependency"
+                                timeout={200}
+                            >
+                            <NewDependency 
                                 key={item.id} 
                                 id={item.id} 
                                 index={i} 
@@ -136,8 +143,9 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                                 remove={removeDependency}
                                 value={form.dependencies[i]}
                                 />
+                            </CSSTransition>
                 })}
-
+                </TransitionGroup>
 
                 <button type="submit">{editState ? "Confirm Changes" : "Submit"}</button>
             </form>

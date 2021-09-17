@@ -25,10 +25,11 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
     }, [dependency])
 
     return (
-        <div>
+        
+        <div className="sub-task">
             <hr/>
             <h4>Sub-task {index + 1}</h4>
-            <button type="button" onClick={() => remove(id)} className="action"><ClearIcon/></button>
+            <button type="button" onClick={() => remove(id)} className="secondary-action"><ClearIcon/></button>
             <div>
                 <label htmlFor={`title-${id}`}>Title</label>
                 <input name="title" onChange={inputChange} id={`title-${id}`} type="text" value={dependency.title}></input>
@@ -39,7 +40,6 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
                 </select>
             </div>
-            <hr/>
         </div>
     )
 }

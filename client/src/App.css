@@ -98,6 +98,7 @@ h4 {
 
 .form-container {
   flex-basis: minmax(400px, 800px);
+  position: relative;
 }
 
 form {
@@ -155,6 +156,22 @@ button.action {
   background: linear-gradient(var(--teal-2), var(--teal) 70%, var(--teal-4));
 }
 
+.action:hover {
+  box-shadow: 3px 3px 10px 0 rgba(0,0,0,0.4);
+}
+
+button.secondary-action {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .epics h2 {
   text-decoration: underline;
 }
@@ -192,3 +209,45 @@ button.action {
 .epics div:hover div h5 {
   color: inherit;
 }
+
+.sub-task {
+  position: relative;
+}
+
+
+/* React Transitions  */
+
+.dependency-enter {
+  /* transform: scaleY(0) */
+  height: 0;
+  opacity: 0;
+}
+
+.dependency-enter-active {
+  /* transform: scaleY(1);
+  transform-origin: top; */
+  opacity: 1;
+  height: 300px;
+  transition: all 200ms ease;
+}
+
+.dependency-enter-done {
+  height: 300px;
+}
+
+.dependency-exit {
+  height: 300px;
+}
+
+.dependency-exit-active {
+  /* transform: scaleY(0);
+  transform-origin: top; */
+  height: 0;
+  opacity: 0;
+  transition: all 200ms ease;
+}
+
+.dependency-exit-done {
+  height: 0;
+}
+

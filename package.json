@@ -15,11 +15,15 @@
   "author": "David Irvin",
   "license": "ISC",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
+    "@mui/icons-material": "^5.0.0",
+    "@mui/material": "^5.0.0",
     "axios": "^0.21.4",
     "bson-objectid": "^2.0.1",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mongoose": "^6.0.6",
+    "react-transition-group": "^4.4.2",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
