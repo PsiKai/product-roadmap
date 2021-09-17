@@ -1,3 +1,46 @@
+@font-face {
+  font-family: FreightBigPro;
+  src: url(./fonts/freigbigprobol.otf) format("opentype")
+}
+@font-face {
+  font-family: NunitoSans-Black;
+  src: url(./fonts/NunitoSans-Black.ttf);
+}
+@font-face {
+  font-family: NunitoSans-Bold;
+  src: url(./fonts/NunitoSans-Bold.ttf);
+}
+@font-face {
+  font-family: NunitoSans-Regular;
+  src: url(./fonts/NunitoSans-Regular.ttf);
+}
+@font-face {
+  font-family: NunitoSans-SemiBold;
+  src: url(./fonts/NunitoSans-SemiBold.ttf);
+}
+
+:root {
+  --Freight: FreightBigPro;
+  --Nunito-Black: NunitoSans-Black;
+  --Nunito-Bold: NunitoSans-Bold;
+  --Nunito-Regular: NunitoSans-Regular;
+  --Nunito-SemiBold: NunitoSans-SemiBold;
+  
+  --dark-blue: #19316D;
+  --med-blue: #1668B7;
+  --light-blue: #009AD7;
+  --blue-green: #0BDFEE;
+  --teal: #0AE4C0;
+  --red: #CE355B;
+}
+
+body {
+  font-family: var(--Nunito-Regular);
+  background-color: var(--teal);
+  color: white;
+  margin: 0;
+}
+
 .app-root {
   width: 100%;
   max-width: 95%;
@@ -14,7 +57,22 @@
 
 h1 {
   text-align: center;
+  font-family: var(--Freight);
+  background-color: var(--dark-blue)
 }
+
+h2 {
+  font-family: var(--Nunito-SemiBold);
+}
+
+h3 {
+  font-family: var(--Nunito-Black);
+}
+
+h4 {
+  font-family: var(--Nunito-Black);
+}
+
 
 .form-container {
   flex-basis: minmax(400px, 800px);
@@ -41,4 +99,10 @@ input, textarea, select, button[type="button"] {
   border: 1px solid black;
   padding: 0 1rem;
   margin-bottom: 1rem;
+  background-color: var(--med-blue);
+  color: white;
+}
+
+.epics div div {
+  background-color: var(--light-blue);
 }
