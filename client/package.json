@@ -7,7 +7,6 @@
     "@emotion/styled": "^11.3.0",
     "@material-ui/core": "^4.12.3",
     "@material-ui/icons": "^4.11.2",
-    "@maxwell/multiverse": "https://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:x-oauth-basic@github.com/himaxwell/multiverse.git#b80389f503266dd7473bdafbd4b7bea956f2332d",
     "@mui/icons-material": "^5.0.0",
     "@mui/material": "^5.0.0",
     "@testing-library/jest-dom": "^5.11.4",
