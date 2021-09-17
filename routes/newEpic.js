@@ -16,7 +16,6 @@ router.get("/", (req, res) => {
 
 router.post("/", (req, res) => {
     const { epic } = req.body
-    console.log(epic);
     Epic.create(epic, (err, newEpic) => {
         if (err) {
             res.send(err)

@@ -4,7 +4,6 @@ import axios from 'axios'
 const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit }) => {
 
     const deleteEpic = async () => {
-        console.log(_id);
         try {
             const res = await axios.delete("/epic/delete", { data: { id: _id } })
             console.log(res.data);

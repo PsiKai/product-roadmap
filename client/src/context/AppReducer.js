@@ -9,7 +9,7 @@ export default (state, action) => {
             const manager = action.payload.filter(epic => epic.toolkit.includes("Manager"))
             const borrower = action.payload.filter(epic => epic.toolkit.includes("Borrower"))
             const lender = action.payload.filter(epic => epic.toolkit.includes("Officer"))
-// console.log(manager, borrower, lender)
+            
             return {
                 ...state,
                 epics: [manager, borrower, lender]

@@ -17,7 +17,6 @@ const RoadMap = () => {
 
     const editEpic = (e) => {
         const { name, id } = e.target
-        console.log(name, id);
         const [manager, borrower, lender] = epics
         let epicArray
         switch (name) {

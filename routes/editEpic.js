@@ -7,7 +7,6 @@ const Epic = require("../db/models/epic")
 
 router.post("/", (req, res) => {
     const { epic, epic: { _id } } = req.body
-    console.log(epic, _id);
     Epic.findOneAndUpdate({"_id": ObjectId(_id)}, epic, (err, updatedEpic) => {
         if (err) {
             console.error(err)

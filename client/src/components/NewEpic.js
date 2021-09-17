@@ -22,7 +22,6 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     }, [epic])
 
     useEffect(() => {
-        console.log("dependenices effect", dependencies);
         setForm({
             ...form,
             dependencies
