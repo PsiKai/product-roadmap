@@ -24,3 +24,4 @@ if (process.env.NODE_ENV === "production") {
 // Routes
 app.use("/epic/new", require("./routes/newEpic"))
 app.use("/epic/edit", require("./routes/editEpic"))
+app.use("/epic/delete", require("./routes/deleteEpic"))
