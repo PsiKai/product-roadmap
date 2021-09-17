@@ -2,6 +2,7 @@ import React, { useEffect, useContext, Fragment, useState } from 'react'
 import AppContext from '../context/AppContext'
 import NewEpic from './NewEpic';
 import Epics from "./Epics"
+import Heading from './Heading';
 
 const RoadMap = () => {
     const appContext = useContext(AppContext)
@@ -40,7 +41,7 @@ const RoadMap = () => {
     return (
         epics.length ?
         <Fragment>
-            <h1>Maxwell Product Roadmap</h1>
+            <Heading />
             <div className="app-root">
                 <Epics epics={epics} edit={editEpic}/>
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>

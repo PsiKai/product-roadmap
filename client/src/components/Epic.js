@@ -1,5 +1,8 @@
 import React from 'react'
 import axios from 'axios'
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+
 
 const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit }) => {
 
@@ -16,8 +19,8 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
     return (
         <div>
             <h3>{title}</h3>
-            <button type="button" id={_id} name={toolkit} onClick={edit}>Edit</button>
-            <button type="button" id={_id} onClick={deleteEpic}>Delete</button>
+            <button type="button" id={_id} name={toolkit} onClick={edit} className="action"><EditIcon/></button>
+            <button type="button" id={_id} onClick={deleteEpic} className="action"><DeleteIcon/></button>
             <p>{description}</p>
             <h4>{status}</h4>
             {dependencies.map(dep => {

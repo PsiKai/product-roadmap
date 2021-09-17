@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import ClearIcon from '@mui/icons-material/Clear';
 
 const NewDependency = ({ id, add, statuses, remove, index, value }) => {
     const [dependency, setDependency] = useState({id, title: "", status: "", description: ""})
@@ -27,7 +28,7 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
         <div>
             <hr/>
             <p>Dependency {index + 1}</p>
-            <button type="button" onClick={() => remove(id)}>X</button>
+            <button type="button" onClick={() => remove(id)} className="action"><ClearIcon/></button>
             <div>
                 <label htmlFor={`title-${id}`}>Title</label>
                 <input name="title" onChange={inputChange} id={`title-${id}`} type="text" value={dependency.title}></input>
