@@ -3,11 +3,10 @@ import axios from "axios"
 import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
 
-const NewEpic = ({ epic=null }) => {
+const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const [form, setForm] = useState({})
     const [newDependencies, setNewDependencies] = useState([])
     const [dependencies, setDependencies] = useState([])
-    const [edit, setEdit] = useState(false)
 
     useEffect(() => {
         if (epic) {
@@ -39,9 +38,10 @@ const NewEpic = ({ epic=null }) => {
 
     const submitForm = async (e) => {
         e.preventDefault()
+        const route = editState ? "/epic/edit" : "/epic/new"
         const newEpic = {epic: form}
         try {
-            const res = await axios.post("/epic/new", newEpic)
+            const res = await axios.post(route, newEpic)
             console.log(res.data);
             window.location.reload()
         } catch (error) {
@@ -77,27 +77,36 @@ const NewEpic = ({ epic=null }) => {
         setDependencies(depFilter)
     }
 
+    const cancelEdit = () => {
+        setDependencies([])
+        setNewDependencies([])
+        setForm({title: "", description: "", toolkit: "", status: "", priority: ""})
+        setEpic([])
+        setEdit(false)
+    }
+
     const toolkits = ["Borrower Toolkit", "Loan Officer Toolkit", "Manager and Integrations Toolkit"]
     const statuses = ["Planned", "In Progress", "Completed", "Pruned", "Blocked"]
 
     return (
         <div className="form-container">
-            <h2>Create a New Epic!</h2>
+            <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>
+            {editState && <button onClick={cancelEdit} type="button">Cancel Edit</button>}
             <form onSubmit={submitForm}>
                 <label htmlFor="toolkit">Toolkit</label>
-                <select onChange={inputChange} id="toolkit" value={form.toolkit}>
+                <select onChange={inputChange} id="toolkit" value={form.toolkit} required>
                     <option value="">Select Toolkit</option>
                     {toolkits.map((kit, i) => <option value={kit} key={i}>{kit}</option>)}
                 </select>
 
                 <label htmlFor="title">Title</label>
-                <input onChange={inputChange} id="title" type="text" value={form.title}></input>
+                <input onChange={inputChange} id="title" type="text" value={form.title} required></input>
 
                 <label htmlFor="description">Description</label>
                 <textarea onChange={inputChange} id="description" value={form.description}></textarea>
 
                 <label htmlFor="status">Status</label>
-                <select onChange={inputChange} id="status" value={form.status}>
+                <select onChange={inputChange} id="status" value={form.status} required>
                     <option value="">Select Status</option>
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
                 </select>
@@ -110,6 +119,7 @@ const NewEpic = ({ epic=null }) => {
                     step="1" 
                     min="1"
                     value={form.priority}
+                    required
                 >
                 </input>
 
@@ -127,7 +137,7 @@ const NewEpic = ({ epic=null }) => {
                 })}
 
 
-                <button type="submit">Submit</button>
+                <button type="submit">{editState ? "Confirm Changes" : "Submit"}</button>
             </form>
         </div>
     )

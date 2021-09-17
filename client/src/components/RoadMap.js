@@ -8,6 +8,7 @@ const RoadMap = () => {
     const { getEpics, epics } = appContext
 
     const [epic, setEpic] = useState([])
+    const [edit, setEdit] = useState(false)
 
 
     useEffect(() => {
@@ -32,6 +33,7 @@ const RoadMap = () => {
             default: 
                 break;
         }
+        setEdit(true)
         setEpic(epicArray[0])
     }
     
@@ -42,7 +44,7 @@ const RoadMap = () => {
             <h1>Maxwell Product Roadmap</h1>
             <div className="app-root">
                 <Epics epics={epics} edit={editEpic}/>
-                <NewEpic epic={epic} />
+                <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
             </div>
         </Fragment>
         : 
