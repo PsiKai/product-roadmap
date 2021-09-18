@@ -143,7 +143,7 @@ p {
 
 .legend {
   background-color: var(--med-blue);
-  margin: 0 0 2rem auto;
+  margin: 0 0 4rem auto;
   padding: 0.5rem 1rem 1rem;
   border-radius: 0  0 0 0.5rem;
   width: max-content;
@@ -284,6 +284,7 @@ button.secondary-action {
   text-decoration: underline;
   text-align: center;
   text-underline-offset: 0.3rem;
+  margin-top: 0;
 }
 
 .epic__card--info {
@@ -298,6 +299,10 @@ button.secondary-action {
   to {
     max-height: 200vh;
   }
+}
+
+.shrink {
+  animation: shrink 400ms ease forwards;
 }
 
 @keyframes shrink {

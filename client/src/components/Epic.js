@@ -11,6 +11,7 @@ import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 
 const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit }) => {
     const [focus, setFocus] = useState(false)
+    const [shrink, setShrink] = useState("")
 
     const deleteEpic = async () => {
         try {
@@ -42,14 +43,18 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         }
     }
 
-    const direction = focus ? "grow" : "shrink"
-    const height = {animation: `${direction} 400ms ease forwards`}
+    const height = focus ? {animation: `grow 400ms ease forwards`} : {}
+
+    const expandCard = () => {
+        setFocus(!focus)
+        focus ? setShrink("shrink") : setShrink("")
+    }
 
     return (
-        <div className="epic__card" onClick={() => setFocus(!focus)}>
+        <div className="epic__card" onClick={expandCard}>
             <h3>{title}</h3>
             {statusIcon(status)}
-            <div className="hidden epic__card--info" style={height}>
+            <div className={`${shrink} epic__card--info`} style={height}>
                 <div className="epic__card--buttons">
                     <button 
                         type="button" 
