@@ -94,10 +94,12 @@ h2 {
 
 h3 {
   font-family: var(--Nunito-Black);
+  margin: 1rem 0;
 }
 
 h4 {
   font-family: var(--Nunito-Black);
+  margin: 1rem 0;
 }
 
 .loading {
@@ -293,7 +295,6 @@ button.secondary-action {
   display: inline-block;
   width: 5px;
   height: 5px;
-  /* background-color: var(--red); */
   position: absolute;
   bottom: 0;
 }
@@ -305,18 +306,13 @@ button.secondary-action {
   gap: 1rem;
 }
 
-/* .epic__card--dependency:not(:first-of-type) {
-  margin-top: 0;
-  transition: all 200ms ease;
-} */
-
-
 .epics .epic__card--dependency h5 {
   color: inherit;
 }
 
 .sub-task {
   position: relative;
+  margin-top: 1rem;
 }
 
 
