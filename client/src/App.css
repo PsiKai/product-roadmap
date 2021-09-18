@@ -117,6 +117,10 @@ h4 {
   margin: 1rem 0;
 }
 
+p {
+  line-height: 1.2;
+}
+
 .loading {
   height: 100vh;
   width: 100vw;
@@ -162,11 +166,25 @@ h4 {
   align-items: flex-end;
   justify-content: space-between;
   gap: 0.3rem;
+  position: relative;
 }
 
-.icon-container span {
+.icon-container .key {
   margin-top: 0.5rem;
 }
+
+.legend-color {
+  position: absolute;
+  height: 8px;
+  width: 13px;
+  bottom: -1rem;
+  left: 50%;
+}
+
+.planned { background-color: var(--light-blue);}
+.progress { background-color: var(--blue-green);}
+.completed { background-color: var(--teal-1);}
+.blocked, .pruned { background-color: var(--red);}
 
 .form-container {
   flex-basis: minmax(400px, 800px);

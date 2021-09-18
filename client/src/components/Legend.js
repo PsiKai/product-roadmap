@@ -8,21 +8,25 @@ import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 const Legend = () => {
     return (
         <div className="legend">
-            {/* <h3>Legend</h3> */}
             <div className="icon-container">
-                <EventAvailableIcon /> <span>Planned</span>
+                <DoneAllOutlinedIcon/> <span className="key">Completed</span>
+                <span className="legend-color completed"></span>
             </div>
             <div className="icon-container">
-                <BuildIcon/> <span>In Progress</span>
+                <BuildIcon/> <span className="key">In Progress</span>
+                <span className="legend-color progress"></span>
             </div>
             <div className="icon-container">
-                <BlockIcon /> <span>Blocked</span>
+                <EventAvailableIcon /> <span className="key">Planned</span>
+                <span className="legend-color planned"></span>
             </div>
             <div className="icon-container">
-                <ContentCutIcon/> <span>Pruned</span>
+                <BlockIcon /> <span className="key">Blocked</span>
+                <span className="legend-color blocked"></span>
             </div>
             <div className="icon-container">
-                <DoneAllOutlinedIcon/> <span>Completed</span>
+                <ContentCutIcon/> <span className="key">Pruned</span>
+                <span className="legend-color pruned"></span>
             </div>
             
         </div>
