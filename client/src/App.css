@@ -340,10 +340,6 @@ button.secondary-action {
   max-width: 90%;
 }
 
-.epic__card--container {
-  position: relative;
-}
-
 .epic__card--dependency {
   background-color: var(--light-blue);
 }
@@ -352,12 +348,17 @@ button.secondary-action {
   max-width: 90%;
 }
 
-.dependency-count {
-  display: inline-block;
-  width: 8px;
-  height: 5px;
+.status-markers {
   position: absolute;
   bottom: 0;
+  display: flex;
+  gap: 5px;
+  right: 1rem;
+}
+
+.dependency-count {
+  width: 8px;
+  height: 5px;
 }
 
 .epic__card--buttons {
