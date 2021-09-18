@@ -28,6 +28,7 @@
   
   --dark-blue: #19316D;
   --dark-blue-1: #D7DBE4;
+  --dark-blue-4: #132552;
   --med-blue: #1668B7;
   --med-blue-1: #D7E4F1;
   --light-blue: #009AD7;
@@ -74,12 +75,8 @@ body {
   }
 }
 
-/* .app-root > * {
-  width: 100%;
-} */
-
 .heading {
-  background-color: var(--dark-blue);
+  background: linear-gradient(175deg, var(--med-blue) 15%, var(--dark-blue));
   height: 150px;
   display: flex;
   align-items: center;
@@ -238,6 +235,12 @@ button:hover {
 button[type="submit"] {
   margin-top: 1.5rem;
   font-size: 1.5rem;
+  background-color: var(--dark-blue-4);
+  color: white;
+}
+
+button[type="submit"]:hover {
+  background-color: var(--dark-blue);
 }
 
 button.action {
