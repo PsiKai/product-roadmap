@@ -73,7 +73,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 5rem;
   gap: 5rem;
 }
 
@@ -120,6 +119,29 @@ h4 {
   color: var(--dark-blue);
 }
 
+.legend {
+  background-color: var(--med-blue);
+  /* display: inline-block; */
+  margin: 1rem 1rem 0 auto;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  width: 200px;
+}
+
+.legend h3 {
+  margin: 0;
+  text-align: center;
+}
+
+.icon-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.icon-container span {
+  margin-top: 0.5rem;
+}
 
 .form-container {
   flex-basis: minmax(400px, 800px);
@@ -182,7 +204,7 @@ button.action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
   background: linear-gradient(var(--teal-2) 32%, var(--teal) 58%, var(--teal-4) 100%);
 }
 
@@ -206,11 +228,6 @@ button.secondary-action {
   text-decoration: underline;
   text-align: center;
   text-underline-offset: 0.3rem;
-}
-
-.epic__card {
-  position: relative;
-  cursor: pointer;
 }
 
 .epic__card:hover {
@@ -272,6 +289,22 @@ button.secondary-action {
   color: white;
   border-radius: 0.5rem;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
+  position: relative;
+}
+
+.epic__card {
+  position: relative;
+  cursor: pointer;
+}
+
+.epic__card > svg, .epic__card--dependency > svg {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.epic__card h3 {
+  max-width: 90%;
 }
 
 .epic__card--container {
@@ -296,10 +329,15 @@ button.secondary-action {
   overflow: none; */
 }
 
+.epic__card--dependency h4 {
+  max-width: 90%;
+}
+
 .epic__card--buttons {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  gap: 1rem;
 }
 
 .epic__card--dependency:not(:first-of-type) {
