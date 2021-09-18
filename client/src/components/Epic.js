@@ -43,7 +43,7 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         }
     }
 
-    const height = focus ? {animation: `grow 400ms ease forwards`} : {}
+    const height = focus ? {animation: `grow 1200ms ease forwards`} : {}
 
     const expandCard = () => {
         setFocus(!focus)
