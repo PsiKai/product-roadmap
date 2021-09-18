@@ -27,12 +27,15 @@
   --Nunito-SemiBold: NunitoSans-SemiBold;
   
   --dark-blue: #19316D;
+  --dark-blue-1: #D7DBE4;
   --med-blue: #1668B7;
+  --med-blue-1: #D7E4F1;
   --light-blue: #009AD7;
   --blue-green: #0BDFEE;
   --teal: #0AE4C0;
   --teal-4: #08AA8F;
   --teal-2: #62EDD6;
+  --teal-1: #D5F8F2;
   --red: #CE355B;
 }
 
@@ -42,7 +45,9 @@
 
 body {
   font-family: var(--Nunito-Regular);
-  background: linear-gradient(to bottom right, var(--teal), var(--teal-4)) ;
+  /* background: linear-gradient(to bottom right, var(--teal), var(--teal-4)) ; */
+  /* background: linear-gradient(to bottom right, var(--teal), var(--blue-green)) ; */
+  background-color: var(--teal-1);
   color: white;
   margin: 0;
 }
@@ -79,7 +84,7 @@ body {
 .heading .logo-heading {
   position: absolute;
   height: 100px;
-  right: 2rem;
+  left: 2rem;
 }
 
 h1 {
@@ -90,11 +95,15 @@ h1 {
 
 h2 {
   font-family: var(--Nunito-SemiBold);
+  color: var(--dark-blue);
 }
 
 h3 {
   font-family: var(--Nunito-Black);
   margin: 1rem 0;
+  /* letter-spacing: 1px; */
+  line-height: 1.3rem;
+  /* text-transform: uppercase; */
 }
 
 h4 {
@@ -121,11 +130,15 @@ h4 {
   color: var(--dark-blue);
 }
 
+.roadmap-container {
+  position: relative;
+}
+
 .legend {
   background-color: var(--med-blue);
-  margin: 1rem 1rem 0 auto;
+  margin: 0 0 0 auto;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0  0 0 0.5rem;
   width: 200px;
 }
 

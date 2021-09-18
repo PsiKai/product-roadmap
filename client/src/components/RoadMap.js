@@ -42,14 +42,14 @@ const RoadMap = () => {
 
     return (
         epics.length ?
-        <Fragment>
+        <div className="roadmap-container">
             <Heading />
             <Legend />
             <div className="app-root">
                 <Epics epics={epics} edit={editEpic}/>
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
             </div>
-        </Fragment>
+        </div>
         : 
         <div className="loading">
             <h2>Loading...</h2>

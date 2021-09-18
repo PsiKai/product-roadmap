@@ -37,7 +37,7 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         switch (depStatus) {
             case "Planned": return "var(--light-blue)"
             case "In Progress": return "var(--blue-green)"
-            case "Completed": return "var(--teal)"
+            case "Completed": return "var(--teal-1)"
             default: return "var(--red)"
         }
     }
