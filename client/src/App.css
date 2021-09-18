@@ -289,6 +289,15 @@ button.secondary-action {
   max-width: 90%;
 }
 
+.dependency-count {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  /* background-color: var(--red); */
+  position: absolute;
+  bottom: 0;
+}
+
 .epic__card--buttons {
   display: flex;
   justify-content: flex-end;

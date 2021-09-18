@@ -33,6 +33,15 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         }
     }
 
+    const dependencyStatus = (depStatus) => {
+        switch (depStatus) {
+            case "Planned": return "var(--light-blue)"
+            case "In Progress": return "var(--blue-green)"
+            case "Completed": return "var(--teal)"
+            default: return "var(--red)"
+        }
+    }
+
     const direction = focus ? "grow" : "shrink"
     const height = {animation: `${direction} 400ms ease forwards`}
 
@@ -42,22 +51,44 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
             {statusIcon(status)}
             <div className="hidden epic__card--info" style={height}>
                 <div className="epic__card--buttons">
-                    <button type="button" id={_id} name={toolkit} onClick={edit} className="action"><EditIcon/></button>
-                    <button type="button" id={_id} onClick={deleteEpic} className="action"><DeleteIcon/></button>
+                    <button 
+                        type="button" 
+                        id={_id} 
+                        name={toolkit} 
+                        onClick={edit} 
+                        className="action"
+                    >    
+                        <EditIcon/>
+                    </button>
+                    <button 
+                        type="button" 
+                        id={_id} 
+                        onClick={deleteEpic} 
+                        className="action"
+                    >
+                        <DeleteIcon/>
+                    </button>
                 </div>
                 <p>{description}</p>
-                {/* <h4>{status}</h4> */}
                 <div className="epic__card--container">
-                {dependencies.map((dep, i) => {
-                    return  <div key={dep.id} className="epic__card--dependency">
-                                <h4>{dep.title}</h4>
-                                {statusIcon(dep.status)}
-                                <p>{dep.description}</p>
-                                {/* <h5>{dep.status}</h5> */}
-                            </div>
-                })}
+                    {dependencies.map(dep => {
+                        return  <div key={dep.id} className="epic__card--dependency">
+                                    <h4>{dep.title}</h4>
+                                    {statusIcon(dep.status)}
+                                    <p>{dep.description}</p>
+                                </div>
+                    })}
                 </div>
             </div>
+            {dependencies.map((dep, i) => {
+                return <span 
+                            style={{
+                                left: `calc(1rem + ${i * 10}px)`,
+                                backgroundColor: `${dependencyStatus(dep.status)}`
+                            }}
+                            className="dependency-count">
+                        </span>
+            })}
         </div>
     )
 }
