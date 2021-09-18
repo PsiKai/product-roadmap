@@ -121,7 +121,6 @@ h4 {
 
 .legend {
   background-color: var(--med-blue);
-  /* display: inline-block; */
   margin: 1rem 1rem 0 auto;
   padding: 1rem;
   border-radius: 0.5rem;
@@ -204,7 +203,6 @@ button.action {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  /* margin-right: 1rem; */
   background: linear-gradient(var(--teal-2) 32%, var(--teal) 58%, var(--teal-4) 100%);
 }
 
@@ -230,38 +228,10 @@ button.secondary-action {
   text-underline-offset: 0.3rem;
 }
 
-.epic__card:hover {
-  /* z-index: 3; */
-}
-
-.epic__card:hover .epic__card--info {
-  /* transform: scaleY(1); */
-  /* height: 200px;
-  opacity: 1; */
-}
-
 .epic__card--info {
   max-height: 0;
   overflow: hidden;
-  /* transform-origin: top;
-  transform: scaleY(0); */
-  /* opacity: 0;
-  height: 0;
-  height: 30px;
-  transition: all 200ms ease; */
 }
-
-/* .card-grow-enter {
-  max-height: 0;
-}
-
-.card-grow-enter-active {
-  animation: grow 200ms ease forwards;
-}
-
-.card-grow-enter-done {
-  max-height: 200vh;
-} */
 
 @keyframes grow {
   from {
@@ -309,24 +279,10 @@ button.secondary-action {
 
 .epic__card--container {
   position: relative;
-  /* height: 0;
-  opacity: 0;
-  overflow: hidden;
-  transition: all 200ms ease; */
-}
-
-.epic__card:hover .epic__card--container {
-  /* height: 200px; */
-  /* opacity: 1;
-  overflow: visible; */
 }
 
 .epic__card--dependency {
   background-color: var(--light-blue);
-  /* position: absolute;
-  width: 100%;
-  height: 100px;
-  overflow: none; */
 }
 
 .epic__card--dependency h4 {
@@ -340,22 +296,11 @@ button.secondary-action {
   gap: 1rem;
 }
 
-.epic__card--dependency:not(:first-of-type) {
-  /* position: relative; */
-  /* margin-top: -4.5rem; */
+/* .epic__card--dependency:not(:first-of-type) {
   margin-top: 0;
-  /* bottom: -90%; */
   transition: all 200ms ease;
-}
-
-/* .epic__card--dependency:not(:last-of-type) h5 {
-  color: transparent;
-  transition: all 200ms ease;
-}
-
-.epic__card:hover .epic__card--dependency ~ div {
-  margin-top: 0;
 } */
+
 
 .epics .epic__card--dependency h5 {
   color: inherit;
@@ -365,20 +310,15 @@ button.secondary-action {
   position: relative;
 }
 
-.hidden {
-}
 
 /* React Transitions  */
 
 .dependency-enter {
-  /* transform: scaleY(0) */
   height: 0;
   opacity: 0;
 }
 
 .dependency-enter-active {
-  /* transform: scaleY(1);
-  transform-origin: top; */
   opacity: 1;
   height: 300px;
   transition: all 200ms ease;
@@ -393,8 +333,6 @@ button.secondary-action {
 }
 
 .dependency-exit-active {
-  /* transform: scaleY(0);
-  transform-origin: top; */
   height: 0;
   opacity: 0;
   transition: all 200ms ease;
