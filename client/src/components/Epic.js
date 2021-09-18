@@ -83,7 +83,7 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
             {dependencies.map((dep, i) => {
                 return  <span 
                             style={{
-                                left: `calc(1rem + ${i * 10}px)`,
+                                left: `calc(1rem + ${i * 13}px)`,
                                 backgroundColor: `${dependencyStatus(dep.status)}`
                             }}
                             className="dependency-count">

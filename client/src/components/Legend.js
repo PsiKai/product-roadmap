@@ -8,7 +8,7 @@ import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 const Legend = () => {
     return (
         <div className="legend">
-            <h3>Legend</h3>
+            {/* <h3>Legend</h3> */}
             <div className="icon-container">
                 <EventAvailableIcon /> <span>Planned</span>
             </div>

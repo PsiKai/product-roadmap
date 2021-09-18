@@ -43,6 +43,10 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--Nunito-Regular);
   /* background: linear-gradient(to bottom right, var(--teal), var(--teal-4)) ; */
@@ -54,12 +58,14 @@ body {
 
 .app-root {
   width: 100%;
-  max-width: 95%;
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  align-items: space-evenly;
-  gap: 5rem;
+  /* max-width: 95%; */
+  /* display: flex;
+  flex-direction: row; */
+  /* margin: 0 auto; */
+  /* align-items: space-evenly; */
+  /* gap: 5rem; */
+  display: grid;
+  grid-template-columns: 400px auto;
 }
 
 @media (max-width: 500px) {
@@ -68,9 +74,9 @@ body {
   }
 }
 
-.app-root > * {
+/* .app-root > * {
   width: 100%;
-}
+} */
 
 .heading {
   background-color: var(--dark-blue);
@@ -136,21 +142,26 @@ h4 {
 
 .legend {
   background-color: var(--med-blue);
-  margin: 0 0 0 auto;
-  padding: 1rem;
+  margin: 0 0 2rem auto;
+  padding: 0.5rem 1rem 1rem;
   border-radius: 0  0 0 0.5rem;
-  width: 200px;
-}
-
-.legend h3 {
-  margin: 0;
-  text-align: center;
-}
-
-.icon-container {
+  width: max-content;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/* .legend h3 {
+  margin: 0;
+  text-align: center;
+} */
+
+.icon-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.3rem;
 }
 
 .icon-container span {
@@ -166,7 +177,7 @@ form {
   width: 100%;
   background-color: var(--light-blue);
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0 0.5rem 0.5rem 0;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
 }
 
@@ -235,6 +246,17 @@ button.secondary-action {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.epics-tree {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin: 0 2rem;
+}
+
+.epics {
+  width: 100%;
 }
 
 .epics h2 {
@@ -306,7 +328,7 @@ button.secondary-action {
 
 .dependency-count {
   display: inline-block;
-  width: 5px;
+  width: 8px;
   height: 5px;
   position: absolute;
   bottom: 0;

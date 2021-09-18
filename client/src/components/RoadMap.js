@@ -46,8 +46,8 @@ const RoadMap = () => {
             <Heading />
             <Legend />
             <div className="app-root">
-                <Epics epics={epics} edit={editEpic}/>
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
+                <Epics epics={epics} edit={editEpic}/>
             </div>
         </div>
         : 

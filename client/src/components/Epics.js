@@ -5,7 +5,7 @@ const Epics = ({epics, edit}) => {
     const [manager, borrower, lender] = epics
     
     return (
-        <Fragment>
+        <div className="epics-tree">
             <div className="epics">
                 <h2>Manager and Integrations Toolkit</h2>
                 {manager.map(epic => <Epic key={epic._id} epic={epic} edit={edit}/>)}
@@ -18,7 +18,7 @@ const Epics = ({epics, edit}) => {
                 <h2>Loan Officer Toolkit</h2>
                 {lender.map(epic => <Epic key={epic._id} epic={epic} edit={edit}/>)}
             </div>
-        </Fragment>
+        </div>
     )
 }
 
