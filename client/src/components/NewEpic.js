@@ -132,7 +132,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                     return <CSSTransition
                                 key={item.id}
                                 classNames="dependency"
-                                timeout={200}
+                                timeout={400}
                             >
                             <NewDependency 
                                 key={item.id} 
