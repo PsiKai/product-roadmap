@@ -3,6 +3,8 @@ import AppContext from '../context/AppContext'
 import NewEpic from './NewEpic';
 import Epics from "./Epics"
 import Heading from './Heading';
+import Legend from './Legend';
+import CircularProgress from '@mui/material/CircularProgress';
 
 const RoadMap = () => {
     const appContext = useContext(AppContext)
@@ -42,13 +44,17 @@ const RoadMap = () => {
         epics.length ?
         <Fragment>
             <Heading />
+            <Legend />
             <div className="app-root">
                 <Epics epics={epics} edit={editEpic}/>
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
             </div>
         </Fragment>
         : 
-        <div>Loading...</div>
+        <div className="loading">
+            <h2>Loading...</h2>
+            <CircularProgress/>
+        </div>
     )
 }
 

@@ -57,6 +57,12 @@ body {
   gap: 5rem;
 }
 
+@media (max-width: 500px) {
+  .app-root {
+    display: block;
+  }
+}
+
 .app-root > * {
   width: 100%;
 }
@@ -95,6 +101,25 @@ h4 {
   font-family: var(--Nunito-Black);
 }
 
+.loading {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.loading span {
+  height: 5rem !important;
+  width: 5rem !important;
+}
+
+.loading svg {
+  color: var(--dark-blue);
+}
+
 
 .form-container {
   flex-basis: minmax(400px, 800px);
@@ -114,7 +139,7 @@ form * {
   width: 100%;
 }
 
-input, textarea, select, button {
+input, textarea, select {
   margin: 0 0 1.5rem;
   color: var(--dark-blue);
   font-family: inherit;
@@ -135,7 +160,7 @@ button {
   background-color: var(--teal);
   padding: 1rem;
   border: none;
-  border-radius: 0.25rem;
+  border-radius: 0.5rem;
   cursor: pointer;
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
   transition: all 200ms ease;
@@ -145,15 +170,20 @@ button:hover {
   background-color: var(--teal-2);
 }
 
+button[type="submit"] {
+  margin-top: 1.5rem;
+  font-size: 1.5rem;
+}
+
 button.action {
   border-radius: 5rem;
-  width: 6rem;
-  height: 3rem;
+  width: 4rem;
+  height: 2rem;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-right: 1rem;
-  background: linear-gradient(var(--teal-2), var(--teal) 70%, var(--teal-4));
+  background: linear-gradient(var(--teal-2) 32%, var(--teal) 58%, var(--teal-4) 100%);
 }
 
 .action:hover {
@@ -174,9 +204,67 @@ button.secondary-action {
 
 .epics h2 {
   text-decoration: underline;
+  text-align: center;
+  text-underline-offset: 0.3rem;
 }
 
-.epics div {
+.epic__card {
+  position: relative;
+  cursor: pointer;
+}
+
+.epic__card:hover {
+  /* z-index: 3; */
+}
+
+.epic__card:hover .epic__card--info {
+  /* transform: scaleY(1); */
+  /* height: 200px;
+  opacity: 1; */
+}
+
+.epic__card--info {
+  max-height: 0;
+  overflow: hidden;
+  /* transform-origin: top;
+  transform: scaleY(0); */
+  /* opacity: 0;
+  height: 0;
+  height: 30px;
+  transition: all 200ms ease; */
+}
+
+/* .card-grow-enter {
+  max-height: 0;
+}
+
+.card-grow-enter-active {
+  animation: grow 200ms ease forwards;
+}
+
+.card-grow-enter-done {
+  max-height: 200vh;
+} */
+
+@keyframes grow {
+  from {
+    max-height: 0;
+  }
+  to {
+    max-height: 200vh;
+  }
+}
+
+@keyframes shrink {
+  from {
+    max-height: 200vh
+  }
+  to {
+    max-height: 0;
+  }
+}
+
+.epic__card, .epic__card--dependency {
   border: 1px solid black;
   padding: 0 1rem;
   margin-bottom: 1rem;
@@ -186,27 +274,52 @@ button.secondary-action {
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
 }
 
-.epics div div {
-  background-color: var(--light-blue);
+.epic__card--container {
+  position: relative;
+  /* height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 200ms ease; */
 }
 
-.epics div div:not(:first-of-type) {
-  position: relative;
-  margin-top: -4.5rem;
-  bottom: -90%;
+.epic__card:hover .epic__card--container {
+  /* height: 200px; */
+  /* opacity: 1;
+  overflow: visible; */
+}
+
+.epic__card--dependency {
+  background-color: var(--light-blue);
+  /* position: absolute;
+  width: 100%;
+  height: 100px;
+  overflow: none; */
+}
+
+.epic__card--buttons {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.epic__card--dependency:not(:first-of-type) {
+  /* position: relative; */
+  /* margin-top: -4.5rem; */
+  margin-top: 0;
+  /* bottom: -90%; */
   transition: all 200ms ease;
 }
 
-.epics div div:not(:last-of-type) h5 {
+/* .epic__card--dependency:not(:last-of-type) h5 {
   color: transparent;
   transition: all 200ms ease;
 }
 
-.epics div:hover div ~ div {
+.epic__card:hover .epic__card--dependency ~ div {
   margin-top: 0;
-}
+} */
 
-.epics div:hover div h5 {
+.epics .epic__card--dependency h5 {
   color: inherit;
 }
 
@@ -214,6 +327,8 @@ button.secondary-action {
   position: relative;
 }
 
+.hidden {
+}
 
 /* React Transitions  */
 
