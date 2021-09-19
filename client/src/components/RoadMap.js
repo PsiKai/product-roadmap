@@ -4,6 +4,7 @@ import NewEpic from './NewEpic';
 import Epics from "./Epics"
 import Heading from './Heading';
 import Legend from './Legend';
+import TreeNav from "./TreeNav"
 import CircularProgress from '@mui/material/CircularProgress';
 
 const RoadMap = () => {
@@ -45,6 +46,7 @@ const RoadMap = () => {
         <div className="roadmap-container">
             <Heading />
             <Legend />
+            <TreeNav />
             <div className="app-root">
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
                 <Epics epics={epics} edit={editEpic}/>

@@ -4,6 +4,7 @@ import BuildIcon from '@mui/icons-material/Build';
 import BlockIcon from '@mui/icons-material/Block';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
 import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
+import ConstructionIcon from '@mui/icons-material/Construction';
 
 const Legend = () => {
     return (
@@ -13,7 +14,7 @@ const Legend = () => {
                 <span className="legend-color completed"></span>
             </div>
             <div className="icon-container">
-                <BuildIcon/> <span className="key">In Progress</span>
+                <ConstructionIcon/> <span className="key">In Progress</span>
                 <span className="legend-color progress"></span>
             </div>
             <div className="icon-container">

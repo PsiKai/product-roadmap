@@ -151,6 +151,7 @@ p {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
+  transition: all 200ms ease;
 }
 
 /* .legend h3 {
@@ -274,6 +275,10 @@ button.secondary-action {
   justify-content: space-between;
   gap: 2rem;
   margin: 0 2rem;
+}
+
+.epics-tree__nav {
+  display: none;
 }
 
 .epics {
@@ -410,3 +415,120 @@ button.secondary-action {
   height: 0;
 }
 
+@media (max-width: 1625px) {
+  .app-root {
+    /* grid-template-columns: auto auto; */
+    display: block;
+  }
+
+  .form-container {
+    position: absolute;
+    transform: translateX(-100%); 
+    transition: all 200ms ease;
+  }
+}
+
+@media (max-width: 1225px) {
+  .legend {
+    width: 100%;
+    justify-content: center;
+    border-radius: 0;
+    margin-bottom: 1rem;
+  }
+
+  .epics-tree {
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .epics-tree__nav {
+    position: relative;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    margin-bottom: 2rem;
+    max-width: 95%;
+  }
+
+  .epics-tree__nav input {
+    width: 0.001px;
+  }
+
+  .epics-tree__nav label {
+    color: var(--dark-blue);
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-blue);
+    position: relative;
+  }
+
+  .epics-tree__nav label:not([for="borrower"]) {
+    border: 1px solid var(--dark-blue-4);
+  }
+
+  .epics-tree__nav label[for="borrower"] {
+    border-top: 1px solid var(--dark-blue-4);
+    border-bottom: 1px solid var(--dark-blue-4);
+  }
+
+  .epics-tree__nav label span {
+    position: relative;
+    z-index: 2;
+  }
+
+  .epics-tree__nav::before {
+    content: "";
+    position: absolute;
+    width: 200px;
+    height: 100%;
+    background-color: var(--med-blue-1);
+    z-index: 1;
+    transition: all 200ms ease;
+    border: 1px solid var(--dark-blue-4);
+  }
+
+  .manager::before {
+      transform: translateX(-100%);
+  }
+  .borrower::before {
+      transform: translateX(0);
+  }
+  .lender::before {
+      transform: translateX(100%);
+  }
+
+  .manager ~ .app-root > .epics-tree > .epics:not(.manager) {
+    transform: translateX(110%);
+    position:absolute;
+  }
+
+  .borrower ~ .app-root > .epics-tree > .epics.manager {
+    transform: translateX(-110%);
+    position: absolute;
+  }
+
+  .borrower ~ .app-root > .epics-tree > .epics.lender {
+    transform: translateX(110%);
+    position:absolute;
+  }
+
+  .lender ~ .app-root > .epics-tree > .epics:not(.lender) {
+    transform: translateX(-200%);
+    position: absolute;
+  }
+  .lender ~ .app-root > .epics-tree > .epics.lender {
+    transform: translateX(0);
+  }
+
+  .epics-tree .manager,
+  .epics-tree .borrower,
+  .epics-tree .lender {
+    position: relative;
+    transition: all 200ms ease;
+    width: 90%;
+    margin: 0 auto;
+  }
+}
