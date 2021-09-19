@@ -75,7 +75,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 5rem;
+  /* gap: 5rem; */
   /* z-index: 4; */
 }
 
@@ -426,8 +426,13 @@ button.secondary-action {
     display: block;
   }
 
+  .form__wrapper {
+    position: relative;
+  }
+
   .form-container {
     position: absolute;
+    /* position: fixed; */
     transform: translateX(-150%);
     width: 400px;
     z-index: 4;
@@ -441,19 +446,22 @@ button.secondary-action {
   label[for="form-reveal"] {
     color: var(--dark-blue);
     background: var(--blue-green);
-    border-radius: 50px;
+    border-radius: 0 0.5rem 0.5rem 0;
     border: 1px solid var(--dark-blue-4);
-    padding: 1rem;
+    border-left: 0;
+    padding: 2px;
     display: flex;
     align-items: center;
     justify-content: center;
     position: absolute;
-    left: 1rem;
-    top: 164px;
+    /* position: fixed; */
+    /* left: 150%; */
+    /* top: ; */
     cursor: pointer;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
     transition: all 200ms ease;
-    z-index: 4;
+    z-index: 5;
+    
   }
 
   label[for="form-reveal"]:hover {
@@ -461,7 +469,7 @@ button.secondary-action {
     background-color: var(--blue-green-2);
   }
 
-  #form-reveal:checked ~ .app-root > .form-container {
+  #form-reveal:checked ~ .form-container {
     transform: translateX(0);
   }
 }
@@ -476,9 +484,9 @@ button.secondary-action {
     margin-bottom: 1rem;
   }
 
-  label[for="form-reveal"] {
+  /* label[for="form-reveal"] {
     top: 220px;
-  }
+  } */
 
   .epics-tree {
     display: block;
@@ -488,14 +496,20 @@ button.secondary-action {
 
   .epics-tree__nav {
     position: relative;
-    display: flex;
-    margin: 0 auto;
+    display: inline-flex;
     justify-content: center;
     margin-bottom: 2rem;
     max-width: 95%;
     border-radius: 0.5rem;
-    overflow: hidden;
+    /* overflow: hidden; */
+    left: 50%;
+    transform: translateX(-50%);
   }
+
+/* 
+  .epics-tree__nav::before {
+    width: 33.3%;
+  } */
 
   .epics-tree__nav input {
     width: 0.001px;
@@ -509,6 +523,7 @@ button.secondary-action {
     justify-content: center;
     background-color: var(--light-blue);
     position: relative;
+    /* border: 1px solid var(--dark-blue-4); */
   }
 
   .epics-tree__nav label[for="manager"],
@@ -538,7 +553,8 @@ button.secondary-action {
   .epics-tree__nav::before {
     content: "";
     position: absolute;
-    width: 200px;
+    /* width: 33.3%; */
+    width: calc(100% / 3 + 1px);
     height: 100%;
     background-color: var(--med-blue-1);
     z-index: 1;
@@ -586,5 +602,50 @@ button.secondary-action {
     transition: all 200ms ease;
     width: 90%;
     margin: 0 auto;
+  }
+}
+
+/* Small Screens  */
+
+@media (max-width: 840px) {
+  .legend {
+    flex-wrap: wrap;
+  }
+
+  .heading {
+    flex-direction: column;
+    justify-content: space-evenly;
+    gap: 0.5rem;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin: 0;
+    line-height: 1;
+  }
+
+  .epics h2 {
+    font-size: 1.5rem;
+    line-height: 1;
+    text-underline-offset: 0;
+    max-width: 90%;
+    margin-inline: auto;
+  }
+
+  .heading .logo-heading {
+    position: static;
+    height: 50px;
+  }
+
+  .epics-tree {
+    margin: 0 1rem;
+  }
+
+  .epics-tree .epics {
+    width: 100%;
+  }
+
+  .form-container {
+    max-width: 100%;
   }
 }

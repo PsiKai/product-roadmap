@@ -4,6 +4,8 @@ import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
 import AddIcon from '@mui/icons-material/Add';
 import EditOffIcon from '@mui/icons-material/EditOff';
+import FormReveal from './FormReveal';
+
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 
 const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
@@ -91,10 +93,12 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const statuses = ["Planned", "In Progress", "Completed", "Pruned", "Blocked"]
 
     return (
+        <div className="form__wrapper">
+                <FormReveal edit={editState}/>
         <div className="form-container">
             <form onSubmit={submitForm}>
                 <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>
-                
+
                 {editState && 
                     <button onClick={cancelEdit} type="button" className="secondary-action" >
                         <EditOffIcon/>
@@ -153,6 +157,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
 
                 <button type="submit">{editState ? "Confirm Changes" : "Submit"}</button>
             </form>
+        </div>
         </div>
     )
 }
