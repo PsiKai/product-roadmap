@@ -18,10 +18,12 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
         } else {
             setDependency({id, title: "", status: "", description: ""})
         }
+    //eslint-disable-next-line
     }, [])
 
     useEffect(() => {
         add(dependency)
+    //eslint-disable-next-line
     }, [dependency])
 
     return (
@@ -32,9 +34,17 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
             <button type="button" onClick={() => remove(id)} className="secondary-action"><ClearIcon/></button>
             <div>
                 <label htmlFor={`title-${id}`}>Title</label>
-                <input name="title" onChange={inputChange} id={`title-${id}`} type="text" value={dependency.title}></input>
+                <input 
+                    name="title" 
+                    onChange={inputChange} 
+                    id={`title-${id}`} 
+                    type="text" 
+                    value={dependency.title}>
+                </input>
+
                 <label htmlFor={`description-${id}`}>Description</label>
                 <textarea name="description" onChange={inputChange} id={`description-${id}`} value={dependency.description}></textarea>
+
                 <select onChange={inputChange} id="status" name="status" value={dependency.status}>
                     <option value="">Select Status</option>
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}

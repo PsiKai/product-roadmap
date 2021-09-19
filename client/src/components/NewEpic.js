@@ -31,6 +31,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
             ...form,
             dependencies
         })
+    //eslint-disable-next-line
     }, [dependencies])
 
     const inputChange = (e) => {
@@ -94,7 +95,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
 
     return (
         <div className="form__wrapper">
-                <FormReveal edit={editState}/>
+                <FormReveal edit={editState} setEdit={cancelEdit}/>
         <div className="form-container">
             <form onSubmit={submitForm}>
                 <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>

@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react'
+import React from 'react'
 import Epic from "./Epic"
 
 const Epics = ({epics, edit}) => {

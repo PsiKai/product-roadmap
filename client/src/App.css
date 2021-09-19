@@ -501,29 +501,26 @@ button.secondary-action {
     margin-bottom: 2rem;
     max-width: 95%;
     border-radius: 0.5rem;
-    /* overflow: hidden; */
     left: 50%;
     transform: translateX(-50%);
   }
 
-/* 
-  .epics-tree__nav::before {
-    width: 33.3%;
-  } */
-
   .epics-tree__nav input {
     width: 0.001px;
+    position: absolute;
+    opacity: 0;
   }
 
   .epics-tree__nav label {
     color: var(--dark-blue);
     width: 200px;
+    height: 3rem;
     display: flex;
     align-items: center;
     justify-content: center;
     background-color: var(--light-blue);
     position: relative;
-    /* border: 1px solid var(--dark-blue-4); */
+    border: 1px solid var(--dark-blue-4);
   }
 
   .epics-tree__nav label[for="manager"],
@@ -537,12 +534,12 @@ button.secondary-action {
   }
 
   .epics-tree__nav label:not([for="borrower"]) {
-    border: 1px solid var(--dark-blue-4);
+    /* border: 1px solid var(--dark-blue-4); */
   }
 
   .epics-tree__nav label[for="borrower"] {
-    border-top: 1px solid var(--dark-blue-4);
-    border-bottom: 1px solid var(--dark-blue-4);
+    /* border-top: 1px solid var(--dark-blue-4);
+    border-bottom: 1px solid var(--dark-blue-4); */
   }
 
   .epics-tree__nav label span {
@@ -627,8 +624,8 @@ button.secondary-action {
   .epics h2 {
     font-size: 1.5rem;
     line-height: 1;
-    text-underline-offset: 0;
-    max-width: 90%;
+    text-underline-offset: unset;
+    max-width: 85%;
     margin-inline: auto;
   }
 
