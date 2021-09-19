@@ -94,7 +94,11 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         <div className="form-container">
             <form onSubmit={submitForm}>
                 <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>
-                {editState && <button onClick={cancelEdit} type="button" className="secondary-action" ><EditOffIcon/></button>}
+                
+                {editState && 
+                    <button onClick={cancelEdit} type="button" className="secondary-action" >
+                        <EditOffIcon/>
+                    </button>}
 
                 <label htmlFor="toolkit">Toolkit</label>
                 <select onChange={inputChange} id="toolkit" value={form.toolkit} required>

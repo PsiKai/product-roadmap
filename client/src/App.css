@@ -33,6 +33,7 @@
   --med-blue-1: #D7E4F1;
   --light-blue: #009AD7;
   --blue-green: #0BDFEE;
+  --blue-green-2: #63EAF3;
   --teal: #0AE4C0;
   --teal-4: #08AA8F;
   --teal-2: #62EDD6;
@@ -50,8 +51,6 @@ html {
 
 body {
   font-family: var(--Nunito-Regular);
-  /* background: linear-gradient(to bottom right, var(--teal), var(--teal-4)) ; */
-  /* background: linear-gradient(to bottom right, var(--teal), var(--blue-green)) ; */
   background-color: var(--teal-1);
   color: white;
   margin: 0;
@@ -59,12 +58,6 @@ body {
 
 .app-root {
   width: 100%;
-  /* max-width: 95%; */
-  /* display: flex;
-  flex-direction: row; */
-  /* margin: 0 auto; */
-  /* align-items: space-evenly; */
-  /* gap: 5rem; */
   display: grid;
   grid-template-columns: 400px auto;
 }
@@ -77,11 +70,13 @@ body {
 
 .heading {
   background: linear-gradient(175deg, var(--med-blue) 15%, var(--dark-blue));
+  position: relative;
   height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 5rem;
+  z-index: 4;
 }
 
 .heading .logo-heading {
@@ -104,9 +99,7 @@ h2 {
 h3 {
   font-family: var(--Nunito-Black);
   margin: 1rem 0;
-  /* letter-spacing: 1px; */
   line-height: 1.3rem;
-  /* text-transform: uppercase; */
 }
 
 h4 {
@@ -154,11 +147,6 @@ p {
   transition: all 200ms ease;
 }
 
-/* .legend h3 {
-  margin: 0;
-  text-align: center;
-} */
-
 .icon-container {
   display: flex;
   align-items: flex-end;
@@ -185,8 +173,8 @@ p {
 .blocked, .pruned { background-color: var(--red);}
 
 .form-container {
-  flex-basis: minmax(400px, 800px);
   position: relative;
+  transition: all 200ms ease;
 }
 
 form {
@@ -200,6 +188,10 @@ form {
 form * {
   display: block;
   width: 100%;
+}
+
+#form-reveal {
+  display: none;
 }
 
 input, textarea, select {
@@ -389,16 +381,19 @@ button.secondary-action {
 .dependency-enter {
   height: 0;
   opacity: 0;
+  margin: 0;
 }
 
 .dependency-enter-active {
   opacity: 1;
   height: 265px;
+  margin-top: 1rem; 
   transition: all 180ms ease;
 }
 
 .dependency-enter-done {
   height: 265px;
+  margin-top: 1rem;
 }
 
 .dependency-exit {
@@ -408,25 +403,63 @@ button.secondary-action {
 .dependency-exit-active {
   height: 0;
   opacity: 0;
+  margin-top: 0;
   transition: all 180ms ease;
 }
 
 .dependency-exit-done {
   height: 0;
+  margin-top: 0;
+  opacity: 0;
 }
+
+/* Hide New Epic Form  */
 
 @media (max-width: 1625px) {
   .app-root {
-    /* grid-template-columns: auto auto; */
     display: block;
   }
 
   .form-container {
     position: absolute;
-    transform: translateX(-100%); 
+    transform: translateX(-150%);
+    width: 400px;
+    z-index: 4;
+  }
+
+  #form-reveal {
+    position: absolute;
+    width: 0.0001px;
+  }
+
+  label[for="form-reveal"] {
+    color: var(--dark-blue);
+    background: var(--blue-green);
+    border-radius: 50px;
+    border: 1px solid var(--dark-blue-4);
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 1rem;
+    top: 164px;
+    cursor: pointer;
+    box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
     transition: all 200ms ease;
   }
+
+  label[for="form-reveal"]:hover {
+    box-shadow: 3px 3px 8px 0 rgba(0,0,0,0.3);
+    background-color: var(--blue-green-2);
+  }
+
+  #form-reveal:checked ~ .app-root > .form-container {
+    transform: translateX(0);
+  }
 }
+
+/* Medium to Small Screens */
 
 @media (max-width: 1225px) {
   .legend {
@@ -434,6 +467,10 @@ button.secondary-action {
     justify-content: center;
     border-radius: 0;
     margin-bottom: 1rem;
+  }
+
+  label[for="form-reveal"] {
+    top: 220px;
   }
 
   .epics-tree {
