@@ -97,13 +97,13 @@ h2 {
 }
 
 h3 {
-  font-family: var(--Nunito-Black);
+  font-family: var(--Nunito-Bold);
   margin: 1rem 0;
   line-height: 1.3rem;
 }
 
 h4 {
-  font-family: var(--Nunito-Black);
+  font-family: var(--Nunito-Bold);
   margin: 1rem 0;
 }
 
@@ -486,6 +486,8 @@ button.secondary-action {
     justify-content: center;
     margin-bottom: 2rem;
     max-width: 95%;
+    border-radius: 0.5rem;
+    overflow: hidden;
   }
 
   .epics-tree__nav input {
@@ -500,6 +502,16 @@ button.secondary-action {
     justify-content: center;
     background-color: var(--light-blue);
     position: relative;
+  }
+
+  .epics-tree__nav label[for="manager"],
+  .manager::before {
+    border-radius: 0.5rem 0 0 0.5rem;
+  }
+
+  .epics-tree__nav label[for="lender"],
+  .lender::before {
+    border-radius: 0 0.5rem 0.5rem 0;
   }
 
   .epics-tree__nav label:not([for="borrower"]) {
