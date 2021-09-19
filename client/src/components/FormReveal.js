@@ -10,10 +10,11 @@ const FormReveal = ({ edit }) => {
 
     return (
         <Fragment>
-            <label htmlFor="form-reveal">
+            {checked && <div onClick={() => setChecked(false)} className="form-overlay"></div>}
+            <label htmlFor="form-reveal" className="form-reveal-label">
                 <AssignmentIcon/>
             </label>
-            <input id="form-reveal" type="checkbox" checked={checked || null} />
+            <input id="form-reveal" type="checkbox" checked={checked || null} onChange={() => setChecked(!checked)}/>
         </Fragment>
     )
 }

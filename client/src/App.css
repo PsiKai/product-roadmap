@@ -76,7 +76,7 @@ body {
   align-items: center;
   justify-content: center;
   gap: 5rem;
-  z-index: 4;
+  /* z-index: 4; */
 }
 
 .heading .logo-heading {
@@ -192,6 +192,12 @@ form * {
 
 #form-reveal {
   display: none;
+}
+
+.form-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 3;
 }
 
 input, textarea, select {
@@ -447,6 +453,7 @@ button.secondary-action {
     cursor: pointer;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
     transition: all 200ms ease;
+    z-index: 4;
   }
 
   label[for="form-reveal"]:hover {
