@@ -377,6 +377,7 @@ button.secondary-action {
 .epic__card--info {
   max-height: 0;
   overflow: hidden;
+  padding-right: 0.5rem;
 }
 
 @keyframes grow {
@@ -415,6 +416,7 @@ button.secondary-action {
 .epic__card {
   position: relative;
   cursor: pointer;
+  padding-right: 0.5rem;
 }
 
 .epic__card > svg, .epic__card--dependency > svg {
