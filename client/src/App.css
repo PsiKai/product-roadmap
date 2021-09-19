@@ -32,6 +32,8 @@
   --med-blue: #1668B7;
   --med-blue-1: #D7E4F1;
   --light-blue: #009AD7;
+  --light-blue-2: #5CBDE5;
+  --light-blue-4: #0076A0;
   --blue-green: #0BDFEE;
   --blue-green-2: #63EAF3;
   --teal: #0AE4C0;
@@ -207,10 +209,7 @@ form *:not(.form-radios *, .form-radios) {
   display: flex;
   justify-content: center;
   margin-bottom: 1rem;
-  /* max-width: 95%; */
   border-radius: 0.5rem;
-  /* left: 50%; */
-  /* transform: translateX(-50%); */
 }
 
 .form-radios input {
@@ -221,6 +220,7 @@ form *:not(.form-radios *, .form-radios) {
 
 .form-radios label {
   width: calc(100% / 3);
+  background: linear-gradient(var(--teal-2), var(--teal), var(--teal-4));
 }
 
 .form-radios label[for="manager-form"] {
@@ -234,7 +234,6 @@ form *:not(.form-radios *, .form-radios) {
 .form-radios::before {
   content: "";
   position: absolute;
-  /* width: 33.3%; */
   width: calc(100% / 3 + 1px);
   height: 100%;
   background-color: var(--med-blue-1);
@@ -245,12 +244,15 @@ form *:not(.form-radios *, .form-radios) {
 
 .manager::before {
   transform: translateX(-100%);
+  box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4)
 }
 .borrower::before {
   transform: translateX(0);
+  box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4), inset -7px 0 9px -7px rgba(0,0,0,0.4);
 }
 .lender::before {
   transform: translateX(100%);
+  box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4);
 }
 
 .form-radios label[for="manager-form"],
@@ -600,7 +602,7 @@ button.secondary-action {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: var(--light-blue);
+    background: linear-gradient(var(--light-blue-2), var(--light-blue), var(--light-blue-4));
     position: relative;
     border: 1px solid var(--dark-blue-4);
   }
@@ -622,26 +624,26 @@ button.secondary-action {
     border: 1px solid var(--dark-blue-4);
   }
 
-  .epics-tree__nav.manager:not(.form-radios) ~ .app-root > .epics-tree > .epics:not(.manager) {
+  .epics-tree__nav.manager ~ .app-root > .epics-tree > .epics:not(.manager) {
     transform: translateX(110%);
     position: absolute;
   }
 
-  .epics-tree__nav.borrower:not(.form-radios) ~ .app-root > .epics-tree > .epics.manager {
+  .epics-tree__nav.borrower ~ .app-root > .epics-tree > .epics.manager {
     transform: translateX(-110%);
     position: absolute;
   }
 
-  .epics-tree__nav.borrower:not(.form-radios) ~ .app-root > .epics-tree > .epics.lender {
+  .epics-tree__nav.borrower ~ .app-root > .epics-tree > .epics.lender {
     transform: translateX(110%);
     position: absolute;
   }
 
-  .epics-tree__nav.lender:not(.form-radios) ~ .app-root > .epics-tree > .epics:not(.lender) {
+  .epics-tree__nav.lender ~ .app-root > .epics-tree > .epics:not(.lender) {
     transform: translateX(-200%);
     position: absolute;
   }
-  .epics-tree__nav.lender:not(.form-radios) ~ .app-root > .epics-tree > .epics.lender {
+  .epics-tree__nav.lender ~ .app-root > .epics-tree > .epics.lender {
     transform: translateX(0);
   }
 
