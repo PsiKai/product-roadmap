@@ -185,9 +185,89 @@ form {
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
 }
 
-form * {
+form *:not(.form-radios *, .form-radios) {
   display: block;
   width: 100%;
+}
+
+.form-radios label {
+  color: var(--dark-blue);
+  width: 200px;
+  height: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--light-blue);
+  position: relative;
+  border: 1px solid var(--dark-blue-4);
+}
+
+.form-radios {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem;
+  /* max-width: 95%; */
+  border-radius: 0.5rem;
+  /* left: 50%; */
+  /* transform: translateX(-50%); */
+}
+
+.form-radios input {
+  width: 0.001px;
+  position: absolute;
+  opacity: 0;
+}
+
+.form-radios label {
+  width: calc(100% / 3);
+}
+
+.form-radios label[for="manager-form"] {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.form-radios label[for="lender-form"] {
+  border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.form-radios::before {
+  content: "";
+  position: absolute;
+  /* width: 33.3%; */
+  width: calc(100% / 3 + 1px);
+  height: 100%;
+  background-color: var(--med-blue-1);
+  z-index: 1;
+  transition: all 200ms ease;
+  border: 1px solid var(--dark-blue-4);
+}
+
+.manager::before {
+  transform: translateX(-100%);
+}
+.borrower::before {
+  transform: translateX(0);
+}
+.lender::before {
+  transform: translateX(100%);
+}
+
+.form-radios label[for="manager-form"],
+.epics-tree__nav label[for="manager-epics"],
+.manager::before {
+  border-radius: 0.5rem 0 0 0.5rem;
+}
+
+.form-radios label[for="lender-form"],
+.epics-tree__nav label[for="lender-epics"],
+.lender::before {
+    border-radius: 0 0.5rem 0.5rem 0;
+}
+
+.form-radios label span {
+  position: relative;
+  z-index: 2;
 }
 
 #form-reveal {
@@ -210,6 +290,8 @@ input, textarea, select {
 
 textarea {
   resize: none;
+  border: 2px inset;
+  border-color: internal light dark(var(--dark-blue), var(--dark-blue));  
 }
 
 input, select {
@@ -523,25 +605,6 @@ button.secondary-action {
     border: 1px solid var(--dark-blue-4);
   }
 
-  .epics-tree__nav label[for="manager"],
-  .manager::before {
-    border-radius: 0.5rem 0 0 0.5rem;
-  }
-
-  .epics-tree__nav label[for="lender"],
-  .lender::before {
-    border-radius: 0 0.5rem 0.5rem 0;
-  }
-
-  .epics-tree__nav label:not([for="borrower"]) {
-    /* border: 1px solid var(--dark-blue-4); */
-  }
-
-  .epics-tree__nav label[for="borrower"] {
-    /* border-top: 1px solid var(--dark-blue-4);
-    border-bottom: 1px solid var(--dark-blue-4); */
-  }
-
   .epics-tree__nav label span {
     position: relative;
     z-index: 2;
@@ -559,36 +622,26 @@ button.secondary-action {
     border: 1px solid var(--dark-blue-4);
   }
 
-  .manager::before {
-      transform: translateX(-100%);
-  }
-  .borrower::before {
-      transform: translateX(0);
-  }
-  .lender::before {
-      transform: translateX(100%);
-  }
-
-  .manager ~ .app-root > .epics-tree > .epics:not(.manager) {
+  .epics-tree__nav.manager:not(.form-radios) ~ .app-root > .epics-tree > .epics:not(.manager) {
     transform: translateX(110%);
-    position:absolute;
+    position: absolute;
   }
 
-  .borrower ~ .app-root > .epics-tree > .epics.manager {
+  .epics-tree__nav.borrower:not(.form-radios) ~ .app-root > .epics-tree > .epics.manager {
     transform: translateX(-110%);
     position: absolute;
   }
 
-  .borrower ~ .app-root > .epics-tree > .epics.lender {
+  .epics-tree__nav.borrower:not(.form-radios) ~ .app-root > .epics-tree > .epics.lender {
     transform: translateX(110%);
-    position:absolute;
+    position: absolute;
   }
 
-  .lender ~ .app-root > .epics-tree > .epics:not(.lender) {
+  .epics-tree__nav.lender:not(.form-radios) ~ .app-root > .epics-tree > .epics:not(.lender) {
     transform: translateX(-200%);
     position: absolute;
   }
-  .lender ~ .app-root > .epics-tree > .epics.lender {
+  .epics-tree__nav.lender:not(.form-radios) ~ .app-root > .epics-tree > .epics.lender {
     transform: translateX(0);
   }
 

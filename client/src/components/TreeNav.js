@@ -1,21 +1,25 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 
-const TreeNav = () => {
+const TreeNav = ({ change, name, className, id, value }) => {
     const [nav, setNav] = useState("borrower")
+
+    useEffect(() => {
+        setNav(value || "borrower")
+    }, [value])
 
     const assignNav = (e) => {
         setNav(e.target.value)
-        console.log(e.target.value);
+        change && change(e)
     }
 
     return (
-        <div className={`epics-tree__nav ${nav}`}>
-            <input id="manager" type="radio" value="manager" name="navs" onClick={assignNav}/>
-            <label htmlFor="manager"><span>Manager</span></label>
-            <input id="borrower" type="radio" value="borrower" name="navs" onClick={assignNav}/>
-            <label htmlFor="borrower"><span>Borrower</span></label>
-            <input id="lender" type="radio" value="lender" name="navs" onClick={assignNav}/>
-            <label htmlFor="lender"><span>Lender</span></label>
+        <div className={`${className} ${nav}`}>
+            <input id={`manager-${id}`} type="radio" value="manager" name={name} onClick={assignNav}/>
+            <label htmlFor={`manager-${id}`}><span>Manager</span></label>
+            <input id={`borrower-${id}`} type="radio" value="borrower" name={name} onClick={assignNav}/>
+            <label htmlFor={`borrower-${id}`}><span>Borrower</span></label>
+            <input id={`lender-${id}`} type="radio" value="lender" name={name} onClick={assignNav}/>
+            <label htmlFor={`lender-${id}`}><span>Lender</span></label>
         </div>
     )
 }

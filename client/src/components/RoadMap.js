@@ -26,13 +26,13 @@ const RoadMap = () => {
         const [manager, borrower, lender] = epics
         let epicArray
         switch (name) {
-            case "Manager and Integrations Toolkit":
+            case "manager":
                 epicArray = manager.filter(item => item._id === id)
                 break;
-            case "Borrower Toolkit":
+            case "borrower":
                 epicArray = borrower.filter(item => item._id === id)
                 break;
-            case "Loan Officer Toolkit":
+            case "lender":
                 epicArray = lender.filter(item => item._id === id)
                 break;
             default: 
@@ -48,7 +48,7 @@ const RoadMap = () => {
         <div className="roadmap-container">
             <Heading />
             <Legend />
-            <TreeNav />
+            <TreeNav className={"epics-tree__nav"} name={"navs"} change={null} id={"epics"}/>
             {/* <FormReveal edit={edit}/> */}
             <div className="app-root">
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
