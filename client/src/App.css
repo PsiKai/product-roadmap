@@ -619,9 +619,9 @@ button.secondary-action {
 .epic__card::after, .epic__card--dependency:not(:last-of-type)::after {
   content: "";
   position: absolute;
-  top: 100%;
+  top: calc(100% + 1px);
   left: 1rem;
-  height: 3.1rem;
+  height: 3rem;
   background-color: var(--dark-blue);
   width: 12px;
 }
