@@ -41,6 +41,8 @@
   --teal-2: #62EDD6;
   --teal-1: #D5F8F2;
   --red: #CE355B;
+
+  --white: #FCFCFC;
 }
 
 *, ::before, ::after {
@@ -68,7 +70,7 @@ html {
 
 body {
   font-family: var(--Nunito-Regular);
-  background-color: var(--teal-1);
+  background-color: var(--white);
   color: white;
   margin: 0;
 }
