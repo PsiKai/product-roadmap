@@ -613,6 +613,17 @@ button.secondary-action {
   position: relative;
   cursor: pointer;
   padding-right: 0.5rem;
+  margin-bottom: 3rem;
+}
+
+.epic__card:not(:last-of-type)::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 1rem;
+  height: 3.1rem;
+  background-color: var(--dark-blue);
+  width: 12px;
 }
 
 .epic__card > svg, .epic__card--dependency > svg {
@@ -623,6 +634,7 @@ button.secondary-action {
 
 .epic__card h3 {
   max-width: 90%;
+  height: 2.5rem;
 }
 
 .epic__card--dependency {
