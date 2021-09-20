@@ -721,6 +721,7 @@ button.secondary-action {
     background: linear-gradient(var(--light-blue-2), var(--light-blue), var(--light-blue-4));
     position: relative;
     border: 1px solid var(--dark-blue-4);
+    cursor: pointer;
   }
 
   .epics-tree__nav label span {
@@ -816,11 +817,8 @@ button.secondary-action {
   }
 }
 
-@media (max-width: 550px) {
+@media (max-width: 610px) {
   .legend {
-    /* flex-wrap: no-wrap;
-    justify-content: center; */
-  
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     padding: 0.5rem 0.125rem 0.75rem;
