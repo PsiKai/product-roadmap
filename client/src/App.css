@@ -28,8 +28,11 @@
   
   --dark-blue: #19316D;
   --dark-blue-1: #D7DBE4;
+  --dark-blue-2: #6C7B9F;
   --dark-blue-4: #132552;
   --med-blue: #1668B7;
+  --med-blue-2: #6A9CD0;
+  --med-blue-4: #104E88;
   --med-blue-1: #D7E4F1;
   --light-blue: #009AD7;
   --light-blue-2: #5CBDE5;
@@ -205,7 +208,7 @@ form {
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
 }
 
-form *:not(.form-radios *, .form-radios, svg) {
+form *:not(.form-radios *, .form-radios, svg, .status-radios-container *) {
   display: block;
   width: 100%;
 }
@@ -291,6 +294,81 @@ form *:not(.form-radios *, .form-radios, svg) {
   position: relative;
   z-index: 2;
 }
+
+/* Status Radio Button Group */
+
+.status-radios-container {
+  display: flex !important;
+  border-radius: 0.5rem;
+  align-items: center;
+  justify-content: center;
+  height: 3rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--dark-blue);
+  overflow: hidden;
+  position: relative;
+}
+
+.status-radios-container::before {
+  content: "";
+  width: calc(100% / 5);
+  height: 100%;
+  background-color: var(--med-blue-1);
+  position: absolute; 
+  z-index: 1;
+  transition: all 200ms ease;
+  box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4), inset -7px 0 9px -7px rgba(0,0,0,0.4);
+}
+
+.completed::before {
+  box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4);
+  transform: translateX(-200%);
+}
+
+.in-progress::before {
+  transform: translateX(-100%);
+}
+
+.planned::before {
+  transform: translateX(0);
+}
+
+.blocked::before {
+  transform: translateX(100%);
+}
+
+.pruned::before {
+  box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4);
+  transform: translateX(200%);
+}
+
+.status-radios-container label {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(var(--teal-2), var(--teal), var(--teal-4));
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--dark-blue)
+}
+
+.status-radios-container label svg {
+  position: relative;
+  z-index: 2;
+}
+
+.status-radios-container label:not(:first-of-type) {
+  border-left: 1px solid var(--dark-blue);
+}
+
+.status-radios-container input {
+  width: 0.0001px;
+  position: absolute;
+}
+
+
+/* Slider Styles  */
 
 .slider-container {
   position: relative;

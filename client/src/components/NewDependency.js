@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ClearIcon from '@mui/icons-material/Clear';
+import StatusRadios from './StatusRadios';
 
 const NewDependency = ({ id, add, statuses, remove, index, value }) => {
     const [dependency, setDependency] = useState({id, title: "", status: "", description: ""})
@@ -49,6 +50,7 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
                     <option value="">Select Status</option>
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
                 </select>
+                <StatusRadios groupId={`dep-${index + 1}`}/>
             </div>
         </div>
     )

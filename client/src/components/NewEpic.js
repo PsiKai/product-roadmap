@@ -6,6 +6,7 @@ import AddIcon from '@mui/icons-material/Add';
 import EditOffIcon from '@mui/icons-material/EditOff';
 import FormReveal from './FormReveal';
 import TreeNav from "./TreeNav"
+import StatusRadios from './StatusRadios';
 
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import AppContext from '../context/AppContext';
@@ -139,6 +140,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                     <option value="">Select Status</option>
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
                 </select>
+                <StatusRadios groupId={"epic"}/>
 
                 <div className="slider-container">
                 <label htmlFor="priority">Priority {form.priority}</label>
