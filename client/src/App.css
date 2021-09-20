@@ -675,6 +675,46 @@ button.secondary-action {
   height: 0;
 }
 
+/* Delete Confirmation Modal  */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  background-color: rgba(0,0,0,0.8);
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.delete-modal {
+  width: 400px;
+  max-width: 90%;
+  background-color: var(--med-blue);
+  padding: 2rem;
+  transform: translateY(100%);
+  border-radius: 0.5rem;
+  z-index: 101;
+  cursor: default;
+}
+
+.delete-modal h2 {
+  color: white;
+  text-decoration: none;
+}
+
+.delete-modal h3 {
+  text-align: center;
+  max-width: 100%;
+}
+
+.modal-button-group {
+  margin-top: 2rem;
+  display: flex;
+  /* justify-content: flex-end;
+  gap: 1rem; */
+  justify-content: space-evenly;
+}
+
 
 /* React Transitions  */
 
@@ -710,6 +750,32 @@ button.secondary-action {
 .dependency-exit-done {
   height: 0;
   margin-top: 0;
+  opacity: 0;
+}
+
+.modal-enter {
+  opacity: 0;
+}
+
+.modal-enter-active {
+  opacity: 1;
+  transition: opacity 200ms ease;
+}
+
+.modal-enter-done {
+  opacity: 1
+}
+
+.modal-exit {
+  opacity: 1;
+}
+
+.modal-exit-active {
+  opacity: 0;
+  transition: opacity 200ms ease;
+}
+
+.modal-exit-done {
   opacity: 0;
 }
 

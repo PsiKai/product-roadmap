@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+
+import DeleteModal from './DeleteModal';
+
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
@@ -8,10 +11,13 @@ import BlockIcon from '@mui/icons-material/Block';
 import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 import ConstructionIcon from '@mui/icons-material/Construction';
 
+import {CSSTransition} from "react-transition-group"
+
 
 const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit }) => {
     const [focus, setFocus] = useState(false)
     const [shrink, setShrink] = useState("")
+    const [confirmDelete, setConfirmDelete] = useState(false)
 
     const deleteEpic = async () => {
         try {
@@ -21,6 +27,7 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         } catch (error) {
             console.error(error)
         }
+        setConfirmDelete(false)
     }
 
     const statusIcon = (cardStatus) => {
@@ -43,9 +50,15 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         }
     }
 
+    const openModal = (e) => {
+        e.stopPropagation()
+        setConfirmDelete(true)
+    }
+
     const height = focus ? {animation: `grow 1200ms ease forwards`} : {}
 
-    const expandCard = () => {
+    const expandCard = (e) => {
+        if (e.target.className === "modal-backdrop") return
         setFocus(!focus)
         focus ? setShrink("shrink") : setShrink("")
     }
@@ -68,7 +81,7 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
                     <button 
                         type="button" 
                         id={_id} 
-                        onClick={deleteEpic} 
+                        onClick={openModal} 
                         className="action"
                     >
                         <DeleteIcon/>
@@ -94,6 +107,14 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
                         </span>
             })}
             </div>
+            <CSSTransition
+                in={confirmDelete}
+                classNames="modal"
+                timeout={200}
+                unmountOnExit
+            >
+                <DeleteModal cancel={setConfirmDelete} confirm={deleteEpic} epicName={title} />
+            </CSSTransition>
         </div>
     )
 }

@@ -22,6 +22,7 @@ const RoadMap = () => {
     }, [])
 
     const editEpic = (e) => {
+        e.stopPropagation()
         const { name, id } = e.currentTarget
         const [manager, borrower, lender] = epics
         let epicArray
