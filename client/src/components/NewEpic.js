@@ -46,7 +46,8 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     useEffect(() => {
         const length = getToolkitLength()
         setToolkitLength(length)
-        setForm({ ...form, priority: form.priority || length })
+        const newPriority = epic.priority || length
+        setForm({ ...form, priority: newPriority })
     //eslint-disable-next-line
     }, [form.toolkit])
 
