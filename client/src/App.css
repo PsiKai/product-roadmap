@@ -203,7 +203,7 @@ form {
   box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
 }
 
-form *:not(.form-radios *, .form-radios) {
+form *:not(.form-radios *, .form-radios, svg) {
   display: block;
   width: 100%;
 }
@@ -257,6 +257,7 @@ form *:not(.form-radios *, .form-radios) {
   z-index: 1;
   transition: all 200ms ease;
   border: 1px solid var(--dark-blue-4);
+  cursor: pointer;
 }
 
 .manager::before {
@@ -442,7 +443,7 @@ button[type="submit"]:hover {
 
 button.action {
   border-radius: 5rem;
-  width: 4rem;
+  width: 4.5rem;
   height: 2rem;
   display: inline-flex;
   align-items: center;
@@ -738,6 +739,7 @@ button.secondary-action {
     z-index: 1;
     transition: all 200ms ease;
     border: 1px solid var(--dark-blue-4);
+    cursor: pointer;
   }
 
   .epics-tree__nav.manager ~ .app-root > .epics-tree > .epics:not(.manager) {
