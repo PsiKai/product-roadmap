@@ -1,5 +1,5 @@
 import React, { Fragment, useState, useEffect } from 'react'
-import AssignmentIcon from '@mui/icons-material/Assignment';
+import AddIcon from '@mui/icons-material/Add';
 
 const FormReveal = ({ edit, setEdit }) => {
     const [checked, setChecked] = useState(false)
@@ -17,7 +17,7 @@ const FormReveal = ({ edit, setEdit }) => {
         <Fragment>
             {checked && <div onClick={abortEdit} className="form-overlay"></div>}
             <label htmlFor="form-reveal" className="form-reveal-label">
-                <AssignmentIcon/>
+                <AddIcon/>
             </label>
             <input 
                 id="form-reveal" 

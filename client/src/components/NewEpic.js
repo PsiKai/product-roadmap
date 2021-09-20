@@ -115,6 +115,18 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         }
     }
 
+    const getPriorityOrder = () => {
+        const lastDigit = form.priority % 10
+        const secondToLast = form.priority.toString().slice(-2, -1)
+        if (secondToLast === "1") return "th"
+        switch (lastDigit) {
+            case 1: return "st"
+            case 2: return "nd"
+            case 3: return "rd"
+            default: return "th"
+        }
+    }
+
     const statuses = ["Planned", "In Progress", "Completed", "Pruned", "Blocked"]
 
     return (
@@ -130,7 +142,6 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                     </button>}
 
                 <label htmlFor="toolkit">Toolkit</label>
-
                 <TreeNav change={inputChange} className={"form-radios"} name={"toolkit"} id="form" value={epic.toolkit}/>
 
                 <label htmlFor="title">Title</label>
@@ -140,14 +151,10 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                 <textarea onChange={inputChange} id="description" name="description" value={form.description} rows="3"></textarea>
 
                 <label htmlFor="status">Status</label>
-                {/* <select onChange={inputChange} id="status" name="status" value={form.status} required>
-                    <option value="">Select Status</option>
-                    {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
-                </select> */}
                 <StatusRadios groupId={"epic"} add={inputChange} value={form.status}/>
 
                 <div className="slider-container">
-                <label htmlFor="priority">Priority {form.priority}</label>
+                <label htmlFor="priority">{form.priority + getPriorityOrder()} Priority</label>
                 <input 
                     type="range" 
                     id="priority" 
@@ -157,8 +164,8 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                     max={toolkitLength}
                     onChange={inputChange}
                 />
-                <span>1</span>
-                <span>{toolkitLength}</span>
+                <span>First</span>
+                <span>Last</span>
                 </div>
 
                 <button type="button" onClick={addDependency} className="action"><AddIcon/>Task</button>
