@@ -203,6 +203,7 @@ form *:not(.form-radios *, .form-radios) {
   background-color: var(--light-blue);
   position: relative;
   border: 1px solid var(--dark-blue-4);
+  cursor: pointer;
 }
 
 .form-radios {
@@ -372,6 +373,7 @@ input[type=range]::-moz-range-track {
   position: fixed;
   inset: 0;
   z-index: 3;
+  display: none;
 }
 
 input, textarea, select {
@@ -619,6 +621,10 @@ button.secondary-action {
   #form-reveal {
     position: absolute;
     width: 0.0001px;
+  }
+
+  .form-overlay {
+    display: block;
   }
 
   label[for="form-reveal"] {
