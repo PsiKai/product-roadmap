@@ -673,18 +673,18 @@ button.secondary-action {
 
 .dependency-enter-active {
   opacity: 1;
-  height: 265px;
+  height: 300px;
   margin-top: 1rem; 
   transition: all 180ms ease;
 }
 
 .dependency-enter-done {
-  height: 265px;
+  height: 300px;
   margin-top: 1rem;
 }
 
 .dependency-exit {
-  height: 265px;
+  height: 300px;
 }
 
 .dependency-exit-active {

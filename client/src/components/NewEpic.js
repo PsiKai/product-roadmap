@@ -15,7 +15,11 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const appContext = useContext(AppContext)
     const { epics: [ manager, borrower, lender ] } = appContext
 
-    const [form, setForm] = useState({toolkit: "borrower", priority: borrower.length + 1})
+    const [form, setForm] = useState({
+        toolkit: "borrower", 
+        priority: borrower.length + 1,
+        status: "Planned"
+    })
     const [newDependencies, setNewDependencies] = useState([])
     const [dependencies, setDependencies] = useState([])
     const [toolkitLength, setToolkitLength] = useState(borrower.length + 1)
@@ -136,11 +140,11 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                 <textarea onChange={inputChange} id="description" name="description" value={form.description} rows="3"></textarea>
 
                 <label htmlFor="status">Status</label>
-                <select onChange={inputChange} id="status" name="status" value={form.status} required>
+                {/* <select onChange={inputChange} id="status" name="status" value={form.status} required>
                     <option value="">Select Status</option>
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
-                </select>
-                <StatusRadios groupId={"epic"}/>
+                </select> */}
+                <StatusRadios groupId={"epic"} add={inputChange} value={form.status}/>
 
                 <div className="slider-container">
                 <label htmlFor="priority">Priority {form.priority}</label>
