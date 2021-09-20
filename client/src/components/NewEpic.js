@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import axios from "axios"
 import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
@@ -8,11 +8,17 @@ import FormReveal from './FormReveal';
 import TreeNav from "./TreeNav"
 
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
+import AppContext from '../context/AppContext';
 
 const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
-    const [form, setForm] = useState({toolkit: "borrower"})
+    const appContext = useContext(AppContext)
+    const { epics: [ manager, borrower, lender ] } = appContext
+
+    const [form, setForm] = useState({toolkit: "borrower", priority: borrower.length + 1})
     const [newDependencies, setNewDependencies] = useState([])
     const [dependencies, setDependencies] = useState([])
+    const [toolkitLength, setToolkitLength] = useState(borrower.length + 1)
+
 
     useEffect(() => {
         if (epic) {
@@ -28,15 +34,18 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     }, [epic])
 
     useEffect(() => {
-        setForm({
-            ...form,
-            dependencies
-        })
+        setForm({ ...form, dependencies })
     //eslint-disable-next-line
     }, [dependencies])
 
+    useEffect(() => {
+        const length = getToolkitLength()
+        setToolkitLength(length)
+        setForm({ ...form, priority: form.priority || length })
+    //eslint-disable-next-line
+    }, [form.toolkit])
+
     const inputChange = (e) => {
-        console.log(e);
         setForm({
             ...form,
             [e.target.name]: e.target.value
@@ -87,20 +96,20 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const cancelEdit = () => {
         setDependencies([])
         setNewDependencies([])
-        setForm({title: "", description: "", toolkit: "borrower", status: "", priority: ""})
+        setForm({title: "", description: "", toolkit: "borrower", status: "", priority: borrower.length + 1})
         setEpic([])
         setEdit(false)
     }
 
-    const radioChange = (e) => {
-        const { value } = e.target
-        setForm({
-            ...form,
-            toolkit: e.target.value
-        })
+    const getToolkitLength = () => {
+        switch (form.toolkit) {
+            case "manager": return manager.length + 1
+            case "borrower": return borrower.length + 1
+            case "lender": return lender.length + 1
+            default: break;
+        }
     }
 
-    const toolkits = ["Borrower Toolkit", "Loan Officer Toolkit", "Manager and Integrations Toolkit"]
     const statuses = ["Planned", "In Progress", "Completed", "Pruned", "Blocked"]
 
     return (
@@ -116,19 +125,8 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                     </button>}
 
                 <label htmlFor="toolkit">Toolkit</label>
-                {/* <select onChange={inputChange} id="toolkit" value={form.toolkit} required>
-                    <option value="">Select Toolkit</option>
-                    {toolkits.map((kit, i) => <option value={kit} key={i}>{kit}</option>)}
-                </select> */}
+
                 <TreeNav change={inputChange} className={"form-radios"} name={"toolkit"} id="form" value={epic.toolkit}/>
-                {/* <div className="form-radios">
-                    <input id="manager" type="radio" value="manager" name="toolkit" onClick={inputChange}/>
-                    <label htmlFor="manager"><span>Manager</span></label>
-                    <input id="borrower" type="radio" value="borrower" name="toolkit" onClick={inputChange}/>
-                    <label htmlFor="borrower"><span>Borrower</span></label>
-                    <input id="lender" type="radio" value="lender" name="toolkit" onClick={inputChange}/>
-                    <label htmlFor="lender"><span>Lender</span></label>
-                </div> */}
 
                 <label htmlFor="title">Title</label>
                 <input onChange={inputChange} id="title" name="title" type="text" value={form.title} required></input>
@@ -142,19 +140,20 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                     {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
                 </select>
 
-                <label htmlFor="priority">Priority</label>
+                <div className="slider-container">
+                <label htmlFor="priority">Priority {form.priority}</label>
                 <input 
-                    onChange={inputChange} 
+                    type="range" 
                     id="priority" 
-                    name="priority"
-                    type="number" 
-                    step="1" 
-                    min="1"
-                    value={form.priority}
-                    required
-                >
-                </input>
-                {/* <input type="range" id="priority" min="1" max={form.toolkit.length}/> */}
+                    name="priority" 
+                    value={form.priority} 
+                    min="1" 
+                    max={toolkitLength}
+                    onChange={inputChange}
+                />
+                <span>1</span>
+                <span>{toolkitLength}</span>
+                </div>
 
                 <button type="button" onClick={addDependency} className="action"><AddIcon/>Task</button>
                 <TransitionGroup>
