@@ -9,16 +9,16 @@ const Legend = () => {
     return (
         <div className="legend">
             <div className="icon-container">
-                <DoneAllOutlinedIcon/> <span className="key">Completed</span>
-                <span className="legend-color completed"></span>
+                <EventAvailableIcon /> <span className="key">Planned</span>
+                <span className="legend-color planned"></span>
             </div>
             <div className="icon-container">
                 <ConstructionIcon/> <span className="key">In Progress</span>
                 <span className="legend-color progress"></span>
             </div>
             <div className="icon-container">
-                <EventAvailableIcon /> <span className="key">Planned</span>
-                <span className="legend-color planned"></span>
+                <DoneAllOutlinedIcon/> <span className="key">Completed</span>
+                <span className="legend-color completed"></span>
             </div>
             <div className="icon-container">
                 <BlockIcon /> <span className="key">Blocked</span>

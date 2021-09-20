@@ -101,7 +101,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const cancelEdit = () => {
         setDependencies([])
         setNewDependencies([])
-        setForm({title: "", description: "", toolkit: "borrower", status: "", priority: borrower.length + 1})
+        setForm({title: "", description: "", toolkit: "borrower", status: "", priority: getToolkitLength()})
         setEpic([])
         setEdit(false)
     }
@@ -142,7 +142,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                     </button>}
 
                 <label htmlFor="toolkit">Toolkit</label>
-                <TreeNav change={inputChange} className={"form-radios"} name={"toolkit"} id="form" value={epic.toolkit}/>
+                <TreeNav change={inputChange} className={"form-radios"} name={"toolkit"} id="form" value={form.toolkit}/>
 
                 <label htmlFor="title">Title</label>
                 <input onChange={inputChange} id="title" name="title" type="text" value={form.title} required></input>
@@ -154,21 +154,22 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                 <StatusRadios groupId={"epic"} add={inputChange} value={form.status}/>
 
                 <div className="slider-container">
-                <label htmlFor="priority">{form.priority + getPriorityOrder()} Priority</label>
-                <input 
-                    type="range" 
-                    id="priority" 
-                    name="priority" 
-                    value={form.priority} 
-                    min="1" 
-                    max={toolkitLength}
-                    onChange={inputChange}
-                />
-                <span>First</span>
-                <span>Last</span>
+                    <label htmlFor="priority">{form.priority + getPriorityOrder()} Priority</label>
+                    <input 
+                        type="range" 
+                        id="priority" 
+                        name="priority" 
+                        value={form.priority || getToolkitLength()} 
+                        min="1" 
+                        max={toolkitLength}
+                        onChange={inputChange}
+                    />
+                    <span>First</span>
+                    <span>Last</span>
                 </div>
 
                 <button type="button" onClick={addDependency} className="action"><AddIcon/>Task</button>
+
                 <TransitionGroup>
                 {newDependencies.map((item, i) => {
                     return <CSSTransition

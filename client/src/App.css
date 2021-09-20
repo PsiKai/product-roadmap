@@ -321,7 +321,7 @@ form *:not(.form-radios *, .form-radios, svg, .status-radios-container *) {
   box-shadow: inset 7px 0 9px -7px rgba(0,0,0,0.4), inset -7px 0 9px -7px rgba(0,0,0,0.4);
 }
 
-.completed::before {
+.planned::before {
   box-shadow: inset -7px 0 9px -7px rgba(0,0,0,0.4);
   transform: translateX(-200%);
 }
@@ -330,7 +330,7 @@ form *:not(.form-radios *, .form-radios, svg, .status-radios-container *) {
   transform: translateX(-100%);
 }
 
-.planned::before {
+.completed::before {
   transform: translateX(0);
 }
 
