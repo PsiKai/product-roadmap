@@ -20,7 +20,6 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         priority: borrower.length + 1,
         status: "Planned"
     })
-    const [newDependencies, setNewDependencies] = useState([])
     const [dependencies, setDependencies] = useState([])
     const [toolkitLength, setToolkitLength] = useState(borrower.length + 1)
 
@@ -29,11 +28,9 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         if (epic) {
             setForm(epic)
             if (epic.dependencies) {
-                setNewDependencies(epic.dependencies)
                 setDependencies(epic.dependencies)
             } else {
                 setDependencies([])
-                setNewDependencies([])
             }
         }
     }, [epic])
@@ -86,14 +83,10 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     }
 
     const addDependency = () => {
-        setNewDependencies([...newDependencies, {id: uuidv4()}])
+        setDependencies([...dependencies, {id: uuidv4(), status: "Planned"}])
     }
 
     const removeDependency = (id) => {
-        const copy = [...newDependencies]
-        const filtered = copy.filter(item => item.id !== id)
-        setNewDependencies(filtered)
-
         const depCopy = [...dependencies]
         const depFilter = depCopy.filter(item => item.id !== id)
         setDependencies(depFilter)
@@ -101,7 +94,6 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
 
     const cancelEdit = () => {
         setDependencies([])
-        setNewDependencies([])
         setForm({title: "", description: "", toolkit: "borrower", status: "", priority: getToolkitLength()})
         setEpic([])
         setEdit(false)
@@ -172,7 +164,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                 <button type="button" onClick={addDependency} className="action"><AddIcon/>Task</button>
 
                 <TransitionGroup>
-                {newDependencies.map((item, i) => {
+                {dependencies.map((item, i) => {
                     return <CSSTransition
                                 key={item.id}
                                 classNames="dependency"
@@ -182,10 +174,9 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                                 key={item.id} 
                                 id={item.id} 
                                 index={i} 
-                                add={dependencyChange} 
-                                statuses={statuses} 
+                                add={dependencyChange}
                                 remove={removeDependency}
-                                value={form.dependencies[i]}
+                                value={item}
                                 />
                             </CSSTransition>
                 })}

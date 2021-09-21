@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import ClearIcon from '@mui/icons-material/Clear';
 import StatusRadios from './StatusRadios';
 
-const NewDependency = ({ id, add, statuses, remove, index, value }) => {
+const NewDependency = ({ id, add, remove, index, value }) => {
     const [dependency, setDependency] = useState({id, title: "", status: "Planned", description: ""})
 
     const inputChange = (e) => {
@@ -46,10 +46,6 @@ const NewDependency = ({ id, add, statuses, remove, index, value }) => {
                 <label htmlFor={`description-${id}`}>Description</label>
                 <textarea name="description" onChange={inputChange} id={`description-${id}`} value={dependency.description}></textarea>
 
-                {/* <select onChange={inputChange} id="status" name="status" value={dependency.status}>
-                    <option value="">Select Status</option>
-                    {statuses.map((status, i) => <option value={status} key={i}>{status}</option>)}
-                </select> */}
                 <label>Status</label>
                 <StatusRadios groupId={`dep-${index + 1}`} add={inputChange} value={dependency.status}/>
             </div>
