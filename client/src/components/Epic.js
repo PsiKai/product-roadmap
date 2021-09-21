@@ -18,7 +18,6 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
     const [focus, setFocus] = useState(false)
     const [shrink, setShrink] = useState("")
     const [confirmDelete, setConfirmDelete] = useState(false)
-    const [loading, setLoading] = useState(false)
 
     const deleteEpic = async () => {
         try {
@@ -114,7 +113,7 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
                 timeout={200}
                 unmountOnExit
             >
-                <DeleteModal cancel={setConfirmDelete} confirm={deleteEpic} epicName={title} loading={loading} />
+                <DeleteModal cancel={setConfirmDelete} confirm={deleteEpic} epicName={title}/>
             </CSSTransition>
         </div>
     )

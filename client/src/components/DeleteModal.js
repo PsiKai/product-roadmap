@@ -1,8 +1,11 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { CircularProgress } from '@mui/material'
 
-const DeleteModal = ({ confirm, cancel, epicName, loading }) => {
+const DeleteModal = ({ confirm, cancel, epicName }) => {
+    const [loading, setLoading] = useState(false)
+
     const confirmDelete = () => {
+        setLoading(true)
         confirm()
     }
 
