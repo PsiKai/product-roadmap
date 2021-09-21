@@ -516,10 +516,20 @@ button[type="submit"] {
   font-size: 1.5rem;
   background-color: var(--dark-blue-4);
   color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 button[type="submit"]:hover {
   background-color: var(--dark-blue);
+}
+
+button[type="submit"] span {
+  color: white;
+  height: 1.5rem !important;
+  width: 1.5rem !important;
 }
 
 button.action {
@@ -665,8 +675,8 @@ button.secondary-action {
 }
 
 .dependency-count {
-  width: 8px;
-  height: 5px;
+  width: 13px;
+  height: 8px;
 }
 
 .epic__card--buttons {
@@ -728,6 +738,18 @@ button.secondary-action {
 
 .modal-button-group button {
   padding: 1rem 2rem;
+  font-size: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* color: white; */
+  gap: 1rem;
+}
+
+.modal-button-group button span {
+  color: white;
+  height: 1rem !important;
+  width: 1rem !important;
 }
 
 .modal-button-group button:first-child {

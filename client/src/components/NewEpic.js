@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, Fragment } from 'react'
 import axios from "axios"
 import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
@@ -7,6 +7,7 @@ import EditOffIcon from '@mui/icons-material/EditOff';
 import FormReveal from './FormReveal';
 import TreeNav from "./TreeNav"
 import StatusRadios from './StatusRadios';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import {CSSTransition, TransitionGroup} from 'react-transition-group'
 import AppContext from '../context/AppContext';
@@ -22,6 +23,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     })
     const [dependencies, setDependencies] = useState([])
     const [toolkitLength, setToolkitLength] = useState(borrower.length + 1)
+    const [loading, setLoading] = useState(false)
 
 
     useEffect(() => {
@@ -57,6 +59,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
 
     const submitForm = async (e) => {
         e.preventDefault()
+        setLoading(true)
         const route = editState ? "/epic/edit" : "/epic/new"
         const newEpic = {epic: form}
         try {
@@ -182,7 +185,20 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                 })}
                 </TransitionGroup>
 
-                <button type="submit">{editState ? "Confirm Changes" : "Submit"}</button>
+                {editState ?
+                    <button type="submit">
+                        {loading ? 
+                            <Fragment>Submitting <CircularProgress/></Fragment>
+                            :
+                            "Confirm Changes"}
+                    </button>
+                    :
+                    <button type="submit">
+                        {loading ? 
+                            <Fragment>Submitting <CircularProgress/></Fragment>
+                            : 
+                            "Submit"}
+                    </button>}
             </form>
         </div>
         </div>
