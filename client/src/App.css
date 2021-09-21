@@ -214,6 +214,10 @@ form *:not(.form-radios *, .form-radios, svg, .status-radios-container *) {
   width: 100%;
 }
 
+label[for="form-reveal"] {
+  display: none;
+}
+
 .form-radios label {
   color: var(--dark-blue);
   width: 200px;

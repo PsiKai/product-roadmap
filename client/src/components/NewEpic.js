@@ -97,7 +97,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
 
     const cancelEdit = () => {
         setDependencies([])
-        setForm({title: "", description: "", toolkit: "borrower", status: "", priority: getToolkitLength()})
+        setForm({title: "", description: "", toolkit: "borrower", status: "Planned", priority: getToolkitLength()})
         setEpic([])
         setEdit(false)
     }
