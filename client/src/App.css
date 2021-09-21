@@ -726,6 +726,15 @@ button.secondary-action {
   justify-content: space-evenly;
 }
 
+.modal-button-group button {
+  padding: 1rem 2rem;
+}
+
+.modal-button-group button:first-child {
+  color: white;
+  background-color: var(--dark-blue);
+}
+
 
 /* React Transitions  */
 
@@ -1007,5 +1016,10 @@ button.secondary-action {
     flex-direction: column;
     gap: 0;
     align-items: center;
+  }
+
+  .delete-modal {
+    transform: translateY(2rem);
+    padding: 2rem 1rem;
   }
 }
