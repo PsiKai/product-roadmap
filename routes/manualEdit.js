@@ -1,7 +1,6 @@
 const express = require("express")
 const router = express.Router()
 
-
 const Epic = require("../db/models/epic")
 
 router.post("/", (req, res) => {

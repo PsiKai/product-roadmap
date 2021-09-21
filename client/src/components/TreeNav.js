@@ -16,8 +16,10 @@ const TreeNav = ({ change, name, className, id, value }) => {
         <div className={`${className} ${nav}`}>
             <input id={`manager-${id}`} type="radio" value="manager" name={name} onClick={assignNav}/>
             <label htmlFor={`manager-${id}`}><span>Manager</span></label>
+
             <input id={`borrower-${id}`} type="radio" value="borrower" name={name} onClick={assignNav}/>
             <label htmlFor={`borrower-${id}`}><span>Borrower</span></label>
+            
             <input id={`lender-${id}`} type="radio" value="lender" name={name} onClick={assignNav}/>
             <label htmlFor={`lender-${id}`}><span>Lender</span></label>
         </div>

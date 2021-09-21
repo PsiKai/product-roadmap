@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+
 import EventAvailableIcon from '@mui/icons-material/EventAvailable';
 import BlockIcon from '@mui/icons-material/Block';
 import ContentCutIcon from '@mui/icons-material/ContentCut';
@@ -7,7 +8,6 @@ import ConstructionIcon from '@mui/icons-material/Construction';
 
 const StatusRadios = ({ groupId, add, value }) => {
     const [status, setStatus] = useState("planned")
-    // const [klass, setKlass] = useState("planned")
 
     useEffect(() => {
         setStatus(value.toLowerCase().replace(/ /g, "-") || "planned")
@@ -38,7 +38,6 @@ const StatusRadios = ({ groupId, add, value }) => {
                 data-class="in-progress" 
                 onClick={moveSelector} 
             />
-
 
             <label htmlFor={`completed-${groupId}`}><DoneAllOutlinedIcon/></label>
             <input 

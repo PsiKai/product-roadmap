@@ -1,16 +1,19 @@
 import React, { useState, useEffect, useContext, Fragment } from 'react'
+import AppContext from '../context/AppContext';
+
 import axios from "axios"
-import NewDependency from './NewDependency'
 import { v4 as uuidv4 } from 'uuid';
+import {CSSTransition, TransitionGroup} from 'react-transition-group'
+
+import NewDependency from './NewDependency'
+import TreeNav from "./TreeNav"
+import FormReveal from './FormReveal';
+import StatusRadios from './StatusRadios';
+
 import AddIcon from '@mui/icons-material/Add';
 import EditOffIcon from '@mui/icons-material/EditOff';
-import FormReveal from './FormReveal';
-import TreeNav from "./TreeNav"
-import StatusRadios from './StatusRadios';
 import CircularProgress from '@mui/material/CircularProgress';
 
-import {CSSTransition, TransitionGroup} from 'react-transition-group'
-import AppContext from '../context/AppContext';
 
 const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
     const appContext = useContext(AppContext)
@@ -39,7 +42,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
 
     useEffect(() => {
         setForm({ ...form, dependencies })
-    //eslint-disable-next-line
+        //eslint-disable-next-line
     }, [dependencies])
 
     useEffect(() => {
@@ -47,7 +50,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         setToolkitLength(length)
         const newPriority = epic.priority || length
         setForm({ ...form, priority: newPriority })
-    //eslint-disable-next-line
+        //eslint-disable-next-line
     }, [form.toolkit])
 
     const inputChange = (e) => {
@@ -65,7 +68,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         try {
             const res = await axios.post(route, newEpic)
             console.log(res.data);
-            res && window.location.reload()
+            res.data && window.location.reload()
         } catch (error) {
             console.log(error.response);
         }
@@ -123,84 +126,95 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         }
     }
 
-    const statuses = ["Planned", "In Progress", "Completed", "Pruned", "Blocked"]
-
     return (
         <div className="form__wrapper">
-                <FormReveal edit={editState} setEdit={cancelEdit}/>
-        <div className="form-container">
-            <form onSubmit={submitForm}>
-                <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>
+            <FormReveal edit={editState} setEdit={cancelEdit}/>
+            <div className="form-container">
+                <form onSubmit={submitForm}>
+                    <h2>{editState ? "Edit This Epic!" : "Create a New Epic!"}</h2>
 
-                {editState && 
-                    <button onClick={cancelEdit} type="button" className="secondary-action" >
-                        <EditOffIcon/>
-                    </button>}
+                    {editState && 
+                        <button onClick={cancelEdit} type="button" className="secondary-action" >
+                            <EditOffIcon/>
+                        </button>}
 
-                <label htmlFor="toolkit">Toolkit</label>
-                <TreeNav change={inputChange} className={"form-radios"} name={"toolkit"} id="form" value={form.toolkit}/>
+                    <label htmlFor="toolkit">Toolkit</label>
+                    <TreeNav change={inputChange} className={"form-radios"} name={"toolkit"} id="form" value={form.toolkit}/>
 
-                <label htmlFor="title">Title</label>
-                <input onChange={inputChange} id="title" name="title" type="text" value={form.title} required></input>
-
-                <label htmlFor="description">Description</label>
-                <textarea onChange={inputChange} id="description" name="description" value={form.description} rows="3"></textarea>
-
-                <label htmlFor="status">Status</label>
-                <StatusRadios groupId={"epic"} add={inputChange} value={form.status}/>
-
-                <div className="slider-container">
-                    <label htmlFor="priority">{form.priority + getPriorityOrder()} Priority</label>
+                    <label htmlFor="title">Title</label>
                     <input 
-                        type="range" 
-                        id="priority" 
-                        name="priority" 
-                        value={form.priority || getToolkitLength()} 
-                        min="1" 
-                        max={editState ? toolkitLength - 1 : toolkitLength}
-                        onChange={inputChange}
-                    />
-                    <span>First</span>
-                    <span>Last</span>
-                </div>
+                        onChange={inputChange} 
+                        id="title" 
+                        name="title" 
+                        type="text" 
+                        value={form.title} 
+                        required>
+                    </input>
 
-                <button type="button" onClick={addDependency} className="action"><AddIcon/>Task</button>
+                    <label htmlFor="description">Description</label>
+                    <textarea 
+                        onChange={inputChange} 
+                        id="description" 
+                        name="description" 
+                        value={form.description} 
+                        rows="3">
+                    </textarea>
 
-                <TransitionGroup>
-                {dependencies.map((item, i) => {
-                    return <CSSTransition
-                                key={item.id}
-                                classNames="dependency"
-                                timeout={400}
-                            >
-                            <NewDependency 
-                                key={item.id} 
-                                id={item.id} 
-                                index={i} 
-                                add={dependencyChange}
-                                remove={removeDependency}
-                                value={item}
-                                />
-                            </CSSTransition>
-                })}
-                </TransitionGroup>
+                    <label htmlFor="status">Status</label>
+                    <StatusRadios groupId={"epic"} add={inputChange} value={form.status}/>
 
-                {editState ?
-                    <button type="submit">
-                        {loading ? 
-                            <Fragment>Submitting <CircularProgress/></Fragment>
-                            :
-                            "Confirm Changes"}
-                    </button>
-                    :
-                    <button type="submit">
-                        {loading ? 
-                            <Fragment>Submitting <CircularProgress/></Fragment>
-                            : 
-                            "Submit"}
-                    </button>}
-            </form>
-        </div>
+                    <div className="slider-container">
+                        <label htmlFor="priority">{form.priority + getPriorityOrder()} Priority</label>
+                        <input 
+                            type="range" 
+                            id="priority" 
+                            name="priority" 
+                            value={form.priority || getToolkitLength()} 
+                            min="1" 
+                            max={editState ? toolkitLength - 1 : toolkitLength}
+                            onChange={inputChange}
+                        />
+                        <span>First</span>
+                        <span>Last</span>
+                    </div>
+
+                    <button type="button" onClick={addDependency} className="action"><AddIcon/>Task</button>
+
+                    <TransitionGroup>
+                        {dependencies.map((item, i) => {
+                            return <CSSTransition
+                                        key={item.id}
+                                        classNames="dependency"
+                                        timeout={400}
+                                    >
+                                        <NewDependency 
+                                            key={item.id} 
+                                            id={item.id} 
+                                            index={i} 
+                                            add={dependencyChange}
+                                            remove={removeDependency}
+                                            value={item}
+                                        />
+                                    </CSSTransition>
+                        })}
+                    </TransitionGroup>
+
+                    {editState ?
+                        <button type="submit">
+                            {loading ? 
+                                <Fragment>Submitting <CircularProgress/></Fragment>
+                                :
+                                "Confirm Changes"}
+                        </button>
+                        :
+                        <button type="submit">
+                            {loading ? 
+                                <Fragment>Submitting <CircularProgress/></Fragment>
+                                : 
+                                "Submit"}
+                        </button>}
+                </form>
+            </div>
         </div>
     )
 }

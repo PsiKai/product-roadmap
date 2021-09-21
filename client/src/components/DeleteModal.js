@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react'
+
 import { CircularProgress } from '@mui/material'
 
 const DeleteModal = ({ confirm, cancel, epicName }) => {

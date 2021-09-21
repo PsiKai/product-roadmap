@@ -19,10 +19,6 @@ export default (state, action) => {
                     default: break;
                 }
             });
-
-            // const manager = action.payload.filter(epic => epic.toolkit.includes("manager"))
-            // const borrower = action.payload.filter(epic => epic.toolkit.includes("borrower"))
-            // const lender = action.payload.filter(epic => epic.toolkit.includes("lender"))
             
             return {
                 ...state,

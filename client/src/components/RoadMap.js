@@ -5,7 +5,6 @@ import Epics from "./Epics"
 import Heading from './Heading';
 import Legend from './Legend';
 import TreeNav from "./TreeNav"
-// import FormReveal from './FormReveal';
 import CircularProgress from '@mui/material/CircularProgress';
 
 const RoadMap = () => {
@@ -50,7 +49,6 @@ const RoadMap = () => {
             <Heading />
             <Legend />
             <TreeNav className={"epics-tree__nav"} name={"navs"} change={null} id={"epics"}/>
-            {/* <FormReveal edit={edit}/> */}
             <div className="app-root">
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
                 <Epics epics={epics} edit={editEpic}/>

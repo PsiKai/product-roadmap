@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import ClearIcon from '@mui/icons-material/Clear';
+
 import StatusRadios from './StatusRadios';
+
+import ClearIcon from '@mui/icons-material/Clear';
 
 const NewDependency = ({ id, add, remove, index, value }) => {
     const [dependency, setDependency] = useState({id, title: "", status: "Planned", description: ""})
@@ -19,20 +21,21 @@ const NewDependency = ({ id, add, remove, index, value }) => {
         } else {
             setDependency({id, title: "", status: "", description: ""})
         }
-    //eslint-disable-next-line
+        //eslint-disable-next-line
     }, [])
 
     useEffect(() => {
         add(dependency)
-    //eslint-disable-next-line
+        //eslint-disable-next-line
     }, [dependency])
 
     return (
         
         <div className="sub-task">
-            <hr/>
             <h4>Sub-task {index + 1}</h4>
-            <button type="button" onClick={() => remove(id)} className="secondary-action"><ClearIcon/></button>
+            <button type="button" onClick={() => remove(id)} className="secondary-action">
+                <ClearIcon/>
+            </button>
             <div>
                 <label htmlFor={`title-${id}`}>Title</label>
                 <input 
@@ -44,7 +47,12 @@ const NewDependency = ({ id, add, remove, index, value }) => {
                 </input>
 
                 <label htmlFor={`description-${id}`}>Description</label>
-                <textarea name="description" onChange={inputChange} id={`description-${id}`} value={dependency.description}></textarea>
+                <textarea 
+                    name="description" 
+                    onChange={inputChange} 
+                    id={`description-${id}`} 
+                    value={dependency.description}>
+                </textarea>
 
                 <label>Status</label>
                 <StatusRadios groupId={`dep-${index + 1}`} add={inputChange} value={dependency.status}/>

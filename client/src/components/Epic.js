@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
+
 import axios from 'axios'
+import {CSSTransition} from "react-transition-group"
 
 import DeleteModal from './DeleteModal';
 
@@ -11,8 +13,6 @@ import BlockIcon from '@mui/icons-material/Block';
 import DoneAllOutlinedIcon from '@mui/icons-material/DoneAllOutlined';
 import ConstructionIcon from '@mui/icons-material/Construction';
 
-import {CSSTransition} from "react-transition-group"
-
 
 const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit, epic }) => {
     const [focus, setFocus] = useState(false)
@@ -23,7 +23,7 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         try {
             const res = await axios.delete("/epic/delete", { data: { epic } })
             console.log(res.data);
-            window.location.reload()
+            res.data && window.location.reload()
         } catch (error) {
             console.error(error)
         }
@@ -55,14 +55,14 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
         setConfirmDelete(true)
     }
 
-    const height = focus ? {animation: `grow 1200ms ease forwards`} : {}
-
     const expandCard = (e) => {
         if (e.target.className === "modal-backdrop") return
         setFocus(!focus)
         focus ? setShrink("shrink") : setShrink("")
     }
 
+    const height = focus ? {animation: `grow 1500ms ease forwards`} : {}
+    
     return (
         <div className="epic__card" onClick={expandCard}>
             <h3>{title}</h3>
@@ -99,13 +99,13 @@ const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }
                 </div>
             </div>
             <div className="status-markers">
-            {dependencies.map((dep, i) => {
-                return  <span 
-                            key={i}
-                            style={{backgroundColor: `${dependencyStatus(dep.status)}`}}
-                            className="dependency-count">
-                        </span>
-            })}
+                {dependencies.map((dep, i) => {
+                    return  <span 
+                                key={i}
+                                style={{backgroundColor: `${dependencyStatus(dep.status)}`}}
+                                className="dependency-count">
+                            </span>
+                })}
             </div>
             <CSSTransition
                 in={confirmDelete}

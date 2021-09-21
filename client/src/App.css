@@ -97,8 +97,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* gap: 5rem; */
-  /* z-index: 4; */
 }
 
 .heading .logo-heading {
@@ -387,10 +385,6 @@ label[for="form-reveal"] {
   font-size: 0.875rem;
 }
 
-/* .slider-container span:first-of-type {
-  left: 0.5rem;
-} */
-
 .slider-container span:last-of-type {
   right: 0rem
 }
@@ -430,8 +424,6 @@ input[type=range]::-webkit-slider-thumb {
   margin-top: -0.55rem;
   box-shadow: 1px 1px 1px rgba(0,0,0,0.4), 0px 0px 1px rgba(0,0,0,0.4);
 }
-
-/* input[type=range]::-webkit-slider-thumb */
 
 input[type=range]::-moz-range-thumb {
   box-shadow: 1px 1px 1px rgba(0,0,0,0.4), 0px 0px 1px rgba(0,0,0,0.4);
@@ -658,7 +650,7 @@ button.secondary-action {
 }
 
 .epic__card > h3 {
-  max-width: 90%;
+  max-width: 85%;
   height: 2.5rem;
   display: flex;
   align-items: center;
@@ -705,6 +697,14 @@ button.secondary-action {
   position: relative;
   margin-top: 1rem;
   height: 0;
+  background-color: var(--med-blue);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
+}
+
+.sub-task h4 {
+  margin-top: 0;
 }
 
 /* Delete Confirmation Modal  */
@@ -743,8 +743,6 @@ button.secondary-action {
 .modal-button-group {
   margin-top: 2rem;
   display: flex;
-  /* justify-content: flex-end;
-  gap: 1rem; */
   justify-content: space-evenly;
 }
 
@@ -754,7 +752,6 @@ button.secondary-action {
   display: flex;
   justify-content: center;
   align-items: center;
-  /* color: white; */
   gap: 1rem;
 }
 
@@ -785,30 +782,30 @@ button.secondary-action {
 
 .dependency-enter-active {
   opacity: 1;
-  height: 300px;
-  margin-top: 1rem; 
-  transition: all 180ms ease;
+  height: 316px;
+  margin: 1rem 0 0 0; 
+  transition: all 200ms ease;
 }
 
 .dependency-enter-done {
-  height: 300px;
-  margin-top: 1rem;
+  height: 316px;
+  margin: 1rem 0 0 0;
 }
 
 .dependency-exit {
-  height: 300px;
+  height: 316px;
 }
 
 .dependency-exit-active {
   height: 0;
   opacity: 0;
-  margin-top: 0;
-  transition: all 180ms ease;
+  margin: 0;
+  transition: all 200ms ease;
 }
 
 .dependency-exit-done {
   height: 0;
-  margin-top: 0;
+  margin: 0;
   opacity: 0;
 }
 
@@ -851,7 +848,6 @@ button.secondary-action {
 
   .form-container {
     position: absolute;
-    /* position: fixed; */
     transform: translateX(-150%);
     width: 400px;
     z-index: 4;
@@ -877,9 +873,6 @@ button.secondary-action {
     align-items: center;
     justify-content: center;
     position: absolute;
-    /* position: fixed; */
-    /* left: 150%; */
-    /* top: ; */
     cursor: pointer;
     box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
     transition: all 200ms ease;
@@ -899,7 +892,7 @@ button.secondary-action {
 
 /* Medium to Small Screens */
 
-@media (max-width: 1225px) {
+@media (max-width: 1000px) {
   .legend {
     width: 100%;
     justify-content: center;
@@ -999,7 +992,7 @@ button.secondary-action {
   
   h1 {
     font-size: 2rem;
-    margin: 0;
+    margin: 0 0.5rem;
     line-height: 1;
   }
 
@@ -1021,7 +1014,6 @@ button.secondary-action {
 
   .heading .logo-heading {
     position: static;
-    /* height: 50px; */
   }
 
   .epics-tree {
@@ -1038,6 +1030,10 @@ button.secondary-action {
 }
 
 @media (max-width: 610px) {
+  .heading .logo-heading {
+    height: 75px;
+  }
+
   .legend {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -1055,6 +1051,10 @@ button.secondary-action {
     flex-direction: column;
     gap: 0;
     align-items: center;
+  }
+
+  .icon-container .key {
+    margin: 0;
   }
 
   .delete-modal {
