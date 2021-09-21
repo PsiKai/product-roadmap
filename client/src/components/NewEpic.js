@@ -62,7 +62,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
         try {
             const res = await axios.post(route, newEpic)
             console.log(res.data);
-            window.location.reload()
+            res && window.location.reload()
         } catch (error) {
             console.log(error.response);
         }
@@ -154,7 +154,7 @@ const NewEpic = ({ epic=null, editState, setEdit, setEpic }) => {
                         name="priority" 
                         value={form.priority || getToolkitLength()} 
                         min="1" 
-                        max={toolkitLength}
+                        max={editState ? toolkitLength - 1 : toolkitLength}
                         onChange={inputChange}
                     />
                     <span>First</span>

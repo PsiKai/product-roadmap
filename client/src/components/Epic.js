@@ -14,14 +14,14 @@ import ConstructionIcon from '@mui/icons-material/Construction';
 import {CSSTransition} from "react-transition-group"
 
 
-const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit }) => {
+const Epic = ({ epic: { title, status, description, dependencies, _id, toolkit }, edit, epic }) => {
     const [focus, setFocus] = useState(false)
     const [shrink, setShrink] = useState("")
     const [confirmDelete, setConfirmDelete] = useState(false)
 
     const deleteEpic = async () => {
         try {
-            const res = await axios.delete("/epic/delete", { data: { id: _id } })
+            const res = await axios.delete("/epic/delete", { data: { epic } })
             console.log(res.data);
             window.location.reload()
         } catch (error) {
