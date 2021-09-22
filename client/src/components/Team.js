@@ -1,9 +1,11 @@
 import React, { Fragment } from 'react'
+
+import TeamReveal from './TeamReveal';
+
 import FaceIcon from '@mui/icons-material/Face';
 import PeopleIcon from '@mui/icons-material/People';
 import SettingsIcon from '@mui/icons-material/Settings';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import TeamReveal from './TeamReveal';
 
 const Team = () => {
     return (

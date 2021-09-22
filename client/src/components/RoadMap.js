@@ -1,12 +1,14 @@
 import React, { useEffect, useContext, useState } from 'react'
 import AppContext from '../context/AppContext'
+
 import NewEpic from './NewEpic';
 import Epics from "./Epics"
 import Heading from './Heading';
 import Legend from './Legend';
 import TreeNav from "./TreeNav"
-import CircularProgress from '@mui/material/CircularProgress';
 import Team from './Team';
+
+import CircularProgress from '@mui/material/CircularProgress';
 
 const RoadMap = () => {
     const appContext = useContext(AppContext)
@@ -18,7 +20,7 @@ const RoadMap = () => {
 
     useEffect(() => {
         getEpics()
-    //eslint-disable-next-line
+        //eslint-disable-next-line
     }, [])
 
     const editEpic = (e) => {

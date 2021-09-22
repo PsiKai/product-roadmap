@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react'
+
 import PeopleIcon from '@mui/icons-material/People';
 
 const TeamReveal = () => {

@@ -23,7 +23,8 @@ const StatusRadios = ({ groupId, add, value }) => {
             <label htmlFor={`planned-${groupId}`}><EventAvailableIcon/></label>
             <input 
                 id={`planned-${groupId}`} 
-                type="radio" name="status" 
+                type="radio" 
+                name="status" 
                 value="Planned" 
                 data-class="planned" 
                 onClick={moveSelector} 
