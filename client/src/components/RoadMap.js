@@ -6,6 +6,7 @@ import Heading from './Heading';
 import Legend from './Legend';
 import TreeNav from "./TreeNav"
 import CircularProgress from '@mui/material/CircularProgress';
+import Team from './Team';
 
 const RoadMap = () => {
     const appContext = useContext(AppContext)
@@ -50,6 +51,7 @@ const RoadMap = () => {
             <Legend />
             <TreeNav className={"epics-tree__nav"} name={"navs"} change={null} id={"epics"}/>
             <div className="app-root">
+                <Team />
                 <NewEpic epic={epic} editState={edit} setEdit={setEdit} setEpic={setEpic}/>
                 <Epics epics={epics} edit={editEpic}/>
             </div>

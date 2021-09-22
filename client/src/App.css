@@ -82,6 +82,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: 400px auto;
+  position: relative;
 }
 
 @media (max-width: 500px) {
@@ -772,6 +773,143 @@ button.secondary-action {
 }
 
 
+/* Team Page Styles */
+.team {
+  background-color: var(--dark-blue);
+  position: absolute;
+  z-index: 10;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  transition: all 200ms ease;
+  transform: translateX(-102%);
+  max-width: 100%;
+  overflow: hidden;
+  box-shadow: 2px 2px 8px 0 rgba(0,0,0,0.4);
+}
+
+.team h1 {
+  text-align: left;
+}
+
+.team__columns {
+  display: flex;
+  gap: 5rem;
+}
+
+.team__columns__toolkit,
+.team__columns__product,
+.team__columns__design,
+.team__columns__tech {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.team__columns__toolkit {
+  justify-content: flex-end;
+}
+
+.team__columns__design--container,
+.team__columns__product--container,
+.team__columns__toolkit--container,
+.team__columns__tech--container {
+  background-color: var(--teal);
+  color: var(--dark-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 13rem;
+  height: 8rem;
+  text-align: center;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.team__columns__toolkit--container {
+  background-color: inherit;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  width: 15rem;
+}
+
+.team__columns__toolkit--container svg {
+  color: white;
+  font-size: 3.5rem;
+}
+
+.team h3 {
+  width: 13rem;
+  text-align: center;
+}
+
+.team h3,
+.team h4 {
+  text-transform: uppercase;
+  color: white;
+}
+
+#team-reveal {
+  width: 0.0001px;
+  position: absolute;
+}
+
+#team-reveal:checked ~ .team {
+  transform: translateX(0);
+}
+
+label[for="team-reveal"] {
+  position: absolute;
+  top: -2rem;
+  color: var(--dark-blue);
+  background: var(--blue-green);
+  border-radius: 0 0.5rem 0.5rem 0;
+  border: 1px solid var(--dark-blue-4);
+  border-left: 0;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 2px 2px 4px 0 rgba(0,0,0,0.4);
+  transition: all 200ms ease;
+  z-index: 10;
+}
+
+.team-reveal__overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9;
+}
+
+@media (max-width: 1200px) {
+  .team {
+    padding: 1rem;
+  }
+
+  .team__columns {
+    flex-direction: column;
+  }
+
+  .team__columns__toolkit,
+  .team__columns__product,
+  .team__columns__design,
+  .team__columns__tech {
+    flex-direction: row;
+  }
+
+  .team__columns__toolkit {
+    gap: 0;
+    justify-content: flex-end;
+  }
+
+  .team__columns__toolkit--container {
+    width: 13rem;
+  }
+}
+
+
+
 /* React Transitions  */
 
 .dependency-enter {
@@ -880,7 +1018,8 @@ button.secondary-action {
     
   }
 
-  label[for="form-reveal"]:hover {
+  label[for="form-reveal"]:hover,
+  label[for="team-reveal"]:hover {
     box-shadow: 3px 3px 8px 0 rgba(0,0,0,0.3);
     background-color: var(--blue-green-2);
   }
