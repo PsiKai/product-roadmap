@@ -25,10 +25,10 @@ const Team = () => {
                         <SettingsIcon/>
                         <h4>Integrations & Manager Toolkit</h4>
                     </div>
-                    <div className="team__columns__toolkit--container">
+                    {/* <div className="team__columns__toolkit--container">
                         <AssignmentTurnedInIcon/>
                         <h4>Processor & Underwriter Toolkit</h4>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="team__columns__product">
                     <h3>Product Manager</h3>
@@ -41,9 +41,9 @@ const Team = () => {
                     <div className="team__columns__product--container">
                         <p>Josiah Feuerbacher</p>
                     </div>
-                    <div className="team__columns__product--container">
+                    {/* <div className="team__columns__product--container">
                         <p>Alex McEvans and Michele Alesia</p>
-                    </div>
+                    </div> */}
                 </div>
 
                 <div className="team__columns__design">
@@ -57,9 +57,9 @@ const Team = () => {
                     <div className="team__columns__design--container">
                         <p>Alex Gardner</p>
                     </div>
-                    <div className="team__columns__design--container">
+                    {/* <div className="team__columns__design--container">
                         <p>Tim Roman</p>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="team__columns__tech">
                     <h3>Tech Lead</h3>
@@ -72,9 +72,9 @@ const Team = () => {
                     <div className="team__columns__tech--container">
                         <p>Brian Nix</p>
                     </div>
-                    <div className="team__columns__tech--container">
+                    {/* <div className="team__columns__tech--container">
                         <p>Xavier Hocquet</p>
-                    </div>
+                    </div> */}
                 </div>
             </div>
             
